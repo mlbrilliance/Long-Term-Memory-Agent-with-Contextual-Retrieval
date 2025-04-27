@@ -1,0 +1,419 @@
+@prefix : <http://example.org/ltm_agent#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sappo: <http://example.org/sappo#> . # Hypothetical SAPPO namespace
+
+# --- Base Ontology (Synapse/SAPPO inspired) ---
+
+sappo:Project rdf:type owl:Class ;
+    rdfs:comment "Represents the overall software project." .
+
+sappo:Component rdf:type owl:Class ;
+    rdfs:comment "A logical part of the system architecture." .
+
+sappo:Module rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Component ;
+    rdfs:comment "A specific code module or file, typically <500L." .
+
+sappo:Function rdf:type owl:Class ;
+     rdfs:comment "A specific function within a Module." .
+
+sappo:Class rdf:type owl:Class ;
+     rdfs:comment "A specific class definition within a Module." .
+
+sappo:Requirement rdf:type owl:Class ;
+    rdfs:comment "A functional or non-functional requirement." .
+
+sappo:Problem rdf:type owl:Class ;
+    rdfs:comment "A potential issue, risk, challenge, or bug." .
+
+sappo:Solution rdf:type owl:Class ;
+    rdfs:comment "A potential solution, fix, or mitigation strategy for a Problem." .
+
+sappo:ArchitecturalPattern rdf:type owl:Class ;
+    rdfs:comment "A named architectural pattern (e.g., RAG, Microservice)." .
+
+sappo:Technology rdf:type owl:Class ;
+    rdfs:comment "A specific technology, library, or framework." .
+
+sappo:TechnologyVersion rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Technology ;
+    rdfs:comment "A specific version of a Technology." .
+
+sappo:EnvironmentContext rdf:type owl:Class ;
+    rdfs:comment "The context in which the system runs (e.g., Python version, IDE)." .
+
+sappo:Test rdf:type owl:Class ;
+    rdfs:comment "A test case or suite." .
+
+sappo:TDDAnchor rdf:type owl:Class ;
+    rdfs:comment "Specific, testable assertion/behavior for Core Logic Testing." .
+
+sappo:ContextualIntegrationPoint rdf:type owl:Class;
+    rdfs:comment "A specific interaction point tested during Contextual Integration Testing." .
+
+sappo:ConfigurationParameter rdf:type owl:Class ;
+    rdfs:comment "A configuration setting for a component." .
+
+# --- LTM Agent Specific Ontology ---
+
+:LongTermMemoryAgent rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Component ;
+    rdfs:label "Long-Term Memory Agent" ;
+    rdfs:comment "The primary Langchain agent responsible for interaction, learning, and LTM usage." .
+
+:MemorySubsystem rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Component ;
+    rdfs:label "Memory Subsystem" ;
+    rdfs:comment "Component encapsulating all aspects of long-term memory." .
+
+:KnowledgeUnit rdf:type owl:Class ;
+    rdfs:label "Knowledge Unit" ;
+    rdfs:comment "A single piece of information stored in the LTM, including context and embedding." .
+
+:Contextualizer rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Component ;
+    rdfs:label "Contextualizer" ;
+    rdfs:comment "Component responsible for generating context for knowledge chunks using an LLM (e.g., Claude API)." .
+
+:ContextualEmbeddingProcess rdf:type owl:Class ;
+    rdfs:label "Contextual Embedding Process" ;
+    rdfs:comment "The process of prepending context to chunks before embedding." .
+
+:ChunkingStrategy rdf:type owl:Class ;
+    rdfs:label "Chunking Strategy" ;
+    rdfs:comment "Defines how raw knowledge/documents are split into chunks." .
+
+:RetrievalMechanism rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Component ;
+    rdfs:label "Retrieval Mechanism" ;
+    rdfs:comment "Component implementing the RAG retrieval logic (semantic, BM25, hybrid)." .
+
+:SemanticSearch rdf:type owl:Class ;
+    rdfs:subClassOf :RetrievalMechanism ;
+    rdfs:comment "Retrieval based on vector similarity." .
+
+:BM25Search rdf:type owl:Class ;
+    rdfs:subClassOf :RetrievalMechanism ;
+    rdfs:comment "Retrieval based on lexical matching (BM25)." .
+
+:ContextualBM25 rdf:type owl:Class ;
+    rdfs:subClassOf :BM25Search ;
+    rdfs:comment "BM25 search applied to context-prepended chunks." .
+
+:HybridSearch rdf:type owl:Class ;
+    rdfs:subClassOf :RetrievalMechanism ;
+    rdfs:comment "Combines multiple retrieval methods (e.g., Semantic + BM25) using rank fusion." .
+
+:Reranker rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Component ;
+    rdfs:label "Reranker" ;
+    rdfs:comment "Component responsible for reranking initial retrieval results for relevance." .
+
+:LearningProcess rdf:type owl:Class ;
+    rdfs:label "Learning Process" ;
+    rdfs:comment "Process by which the agent acquires new potential knowledge." .
+
+:LearningFromAction rdf:type owl:Class ;
+    rdfs:subClassOf :LearningProcess ;
+    rdfs:comment "Learning derived from the outcomes or execution of agent actions." .
+
+:LearningFromHumanFeedback rdf:type owl:Class ;
+    rdfs:subClassOf :LearningProcess ;
+    rdfs:comment "Learning derived from explicit human correction or reinforcement (RLHF)." .
+
+:UpdateDecisionLogic rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Component ;
+    rdfs:label "Update Decision Logic" ;
+    rdfs:comment "The critical logic deciding whether new information should be added as new or update existing knowledge." .
+
+:KnowledgeComparison rdf:type owl:Class ;
+    rdfs:label "Knowledge Comparison" ;
+    rdfs:comment "The process of comparing new potential knowledge with existing similar knowledge." .
+
+:UpdateMechanism rdf:type owl:Class ;
+    rdfs:label "Update Mechanism" ;
+    rdfs:comment "Process for modifying an existing KnowledgeUnit (merging, replacing)." .
+
+:MergeStrategy rdf:type owl:Class ;
+    rdfs:subClassOf :UpdateMechanism ;
+    rdfs:comment "Strategy for merging new information with existing KnowledgeUnit content/context." .
+
+:ReplaceStrategy rdf:type owl:Class ;
+    rdfs:subClassOf :UpdateMechanism ;
+    rdfs:comment "Strategy for replacing an existing KnowledgeUnit with new information." .
+
+:VectorStore rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Component ;
+    rdfs:label "Vector Store" ;
+    rdfs:comment "Database storing embeddings for semantic search (e.g., Chroma, FAISS, Pinecone)." .
+
+:EmbeddingModel rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Technology ;
+    rdfs:label "Embedding Model" ;
+    rdfs:comment "Model used to generate vector embeddings (e.g., Gemini, Voyage, OpenAI)." .
+
+:BM25Index rdf:type owl:Class ;
+    rdfs:label "BM25 Index" ;
+    rdfs:comment "The data structure used for efficient BM25 search." .
+
+:ResponsibleScalingPolicyAspect rdf:type owl:Class ;
+    rdfs:label "Responsible Scaling Policy Aspect" ;
+    rdfs:comment "A specific consideration derived from Anthropic's RSP (e.g., related to autonomous improvement, capability thresholds)." .
+
+# --- Potential Problems ---
+
+:MemoryUpdateAmbiguity rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Problem ;
+    rdfs:label "Memory Update Ambiguity" ;
+    rdfs:comment "Difficulty in deciding whether new knowledge is novel or an update to existing knowledge." .
+
+:RetrievalInefficiency rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Problem ;
+    rdfs:label "Retrieval Inefficiency" ;
+    rdfs:comment "Slow or computationally expensive retrieval from a large LTM." .
+
+:RetrievalAccuracyIssue rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Problem ;
+    rdfs:label "Retrieval Accuracy Issue" ;
+    rdfs:comment "Failing to retrieve the most relevant context (addressed by Contextual Retrieval)." .
+
+:DuplicateKnowledgeEntry rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Problem ;
+    rdfs:label "Duplicate Knowledge Entry" ;
+    rdfs:comment "Adding knowledge that is functionally identical to existing knowledge." .
+
+:IncorrectKnowledgeUpdate rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Problem ;
+    rdfs:label "Incorrect Knowledge Update" ;
+    rdfs:comment "Updating the wrong existing knowledge unit, or updating with incorrect/merged information." .
+
+:InformationConflict rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Problem ;
+    rdfs:label "Information Conflict / Contradiction" ;
+    rdfs:comment "New knowledge contradicts existing knowledge in LTM." .
+
+:ScalabilityBottleneck rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Problem ;
+    rdfs:label "Scalability Bottleneck" ;
+    rdfs:comment "Performance degrading unacceptably as the LTM grows." .
+
+:ContextGenerationFailure rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Problem ;
+    rdfs:comment "Failure in the LLM call to generate appropriate context for a chunk." .
+
+:EmbeddingDrift rdf:type owl:Class;
+    rdfs:subClassOf sappo:Problem;
+    rdfs:comment "Embeddings changing over time if the model is updated, potentially invalidating the vector store." .
+
+:StaleBM25Index rdf:type owl:Class;
+     rdfs:subClassOf sappo:Problem;
+     rdfs:comment "The BM25 index becomes out-of-sync with updated knowledge units." .
+
+:RecursiveLearningLoop rdf:type owl:Class;
+     rdfs:subClassOf sappo:Problem;
+     rdfs:comment "Agent learns something, acts on it, learns from the action, reinforcing potentially suboptimal behaviour without external correction." .
+
+
+# --- Potential Solutions / Patterns ---
+
+:RAG rdf:type owl:Class ;
+    rdfs:subClassOf sappo:ArchitecturalPattern ;
+    rdfs:label "Retrieval-Augmented Generation (RAG)" .
+
+:ContextualRetrieval rdf:type owl:Class ;
+    rdfs:subClassOf :RAG ;
+    rdfs:label "Contextual Retrieval" ;
+    rdfs:comment "Anthropic's approach using Contextual Embeddings and Contextual BM25." .
+
+:LLMAsJudge rdf:type owl:Class ;
+    rdfs:subClassOf sappo:ArchitecturalPattern, sappo:Solution ;
+    rdfs:label "LLM as Judge / Comparator" ;
+    rdfs:comment "Using an LLM call to compare new knowledge with existing knowledge for the update decision." .
+
+:SimilarityThresholding rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Solution ;
+    rdfs:label "Similarity Thresholding" ;
+    rdfs:comment "Using embedding similarity scores and thresholds to help decide on add vs. update." .
+
+:HeuristicBasedDecision rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Solution ;
+    rdfs:label "Heuristic-Based Decision" ;
+    rdfs:comment "Using predefined rules (e.g., based on source, timestamp, keywords) for add vs. update logic." .
+
+:HumanInTheLoopValidation rdf:type owl:Class ;
+    rdfs:subClassOf sappo:ArchitecturalPattern, sappo:Solution ;
+    rdfs:label "Human-in-the-Loop Validation" ;
+    rdfs:comment "Requiring human approval for certain memory updates, especially conflicting ones or low-confidence decisions." .
+
+:AsynchronousProcessing rdf:type owl:Class;
+     rdfs:subClassOf sappo:ArchitecturalPattern;
+     rdfs:comment "Performing LTM updates or context generation asynchronously to avoid blocking agent actions." .
+
+:LazyIndexing rdf:type owl:Class;
+      rdfs:subClassOf sappo:ArchitecturalPattern;
+      rdfs:comment "Updating indices (Vector, BM25) in batches or during low-activity periods." .
+
+:KnowledgeVersioning rdf:type owl:Class;
+    rdfs:subClassOf sappo:ArchitecturalPattern;
+    rdfs:comment "Keeping track of different versions or updates to a knowledge unit." .
+
+# --- Technologies ---
+
+:Langchain rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Technology ;
+    rdfs:label "Langchain" .
+
+:Python rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Technology ;
+    rdfs:label "Python" .
+
+:WindSurfIDE rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Technology ;
+    rdfs:label "WindSurf IDE" ;
+    rdfs:comment "Specified development environment." .
+
+:ClaudeAPI rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Technology ;
+    rdfs:label "Claude API" ;
+    rdfs:comment "Used for context generation and potentially LLM-as-judge logic." .
+
+:ChromaDB rdf:type owl:Class ;
+    rdfs:subClassOf :VectorStore, sappo:Technology ;
+    rdfs:label "ChromaDB" .
+
+:FAISS rdf:type owl:Class ;
+     rdfs:subClassOf :VectorStore, sappo:Technology ;
+     rdfs:label "FAISS" .
+
+:Pinecone rdf:type owl:Class ;
+     rdfs:subClassOf :VectorStore, sappo:Technology ;
+     rdfs:label "Pinecone" .
+
+:GeminiEmbedding rdf:type owl:Class ;
+     rdfs:subClassOf :EmbeddingModel ;
+     rdfs:label "Gemini Text Embedding" .
+
+:VoyageEmbedding rdf:type owl:Class ;
+      rdfs:subClassOf :EmbeddingModel ;
+      rdfs:label "VoyageAI Embedding" .
+
+:SentenceTransformers rdf:type owl:Class ;
+      rdfs:subClassOf sappo:Technology ;
+      rdfs:label "Sentence Transformers Library" .
+
+:RankBM25 rdf:type owl:Class ;
+      rdfs:subClassOf sappo:Technology ;
+      rdfs:label "rank_bm25 Library" .
+
+:CohereReranker rdf:type owl:Class ;
+      rdfs:subClassOf :Reranker, sappo:Technology ;
+      rdfs:label "Cohere Rerank API" .
+
+:Pytest rdf:type owl:Class ;
+    rdfs:subClassOf sappo:Technology ;
+    rdfs:label "Pytest" ;
+    rdfs:comment "Framework for Targeted Testing." .
+
+# --- Properties ---
+
+:hasRequirement rdf:type owl:ObjectProperty ;
+    rdfs:domain sappo:Project ;
+    rdfs:range sappo:Requirement .
+
+:usesComponent rdf:type owl:ObjectProperty ;
+    rdfs:domain sappo:Component ;
+    rdfs:range sappo:Component .
+
+:implementsPattern rdf:type owl:ObjectProperty ;
+    rdfs:domain sappo:Component ;
+    rdfs:range sappo:ArchitecturalPattern .
+
+:usesTechnology rdf:type owl:ObjectProperty ;
+    rdfs:domain sappo:Component ;
+    rdfs:range sappo:Technology .
+
+:hasPotentialProblem rdf:type owl:ObjectProperty ;
+    rdfs:domain sappo:Component ;
+    rdfs:range sappo:Problem .
+
+:hasSolution rdf:type owl:ObjectProperty ;
+    rdfs:domain sappo:Problem ;
+    rdfs:range sappo:Solution .
+
+:requiresContext rdf:type owl:ObjectProperty ;
+     rdfs:domain :LongTermMemoryAgent ;
+     rdfs:range :MemorySubsystem .
+
+:generatesContextFor rdf:type owl:ObjectProperty ;
+      rdfs:domain :Contextualizer ;
+      rdfs:range :KnowledgeUnit .
+
+:storesKnowledgeUnit rdf:type owl:ObjectProperty ;
+       rdfs:domain :VectorStore ;
+       rdfs:range :KnowledgeUnit .
+
+:usesEmbeddingModel rdf:type owl:ObjectProperty ;
+      rdfs:domain :MemorySubsystem ;
+      rdfs:range :EmbeddingModel .
+
+:triggersLearningProcess rdf:type owl:ObjectProperty ;
+       rdfs:domain :LongTermMemoryAgent ; # Agent actions or external input
+       rdfs:range :LearningProcess .
+
+:decidesUpdateAction rdf:type owl:ObjectProperty ;
+     rdfs:domain :UpdateDecisionLogic ;
+     rdfs:range [ rdf:type owl:Class ;
+                  owl:unionOf ( :KnowledgeAddition :KnowledgeUpdateImplementation ) ] . # Placeholder for action type
+
+:isTestedBy rdf:type owl:ObjectProperty ;
+      rdfs:domain sappo:Component ;
+      rdfs:range sappo:Test .
+
+:hasTDDAnchor rdf:type owl:ObjectProperty ;
+    rdfs:domain sappo:Function ;
+    rdfs:range sappo:TDDAnchor .
+
+:hasContextualIntegrationPoint rdf:type owl:ObjectProperty;
+     rdfs:domain sappo:Component;
+     rdfs:range :ContextualIntegrationPoint .
+
+:hasChunkSize rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ChunkingStrategy ;
+    rdfs:range xsd:integer .
+
+:hasChunkOverlap rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ChunkingStrategy ;
+    rdfs:range xsd:integer .
+
+:knowledgeTimestamp rdf:type owl:DatatypeProperty ;
+    rdfs:domain :KnowledgeUnit ;
+    rdfs:range xsd:dateTime .
+
+:knowledgeSource rdf:type owl:DatatypeProperty ;
+    rdfs:domain :KnowledgeUnit ;
+    rdfs:range xsd:string . # Could be 'action_result', 'human_feedback', 'initial_corpus'
+
+:contextualText rdf:type owl:DatatypeProperty;
+     rdfs:domain :KnowledgeUnit;
+     rdfs:range xsd:string .
+
+:originalChunkText rdf:type owl:DatatypeProperty;
+      rdfs:domain :KnowledgeUnit;
+      rdfs:range xsd:string .
+
+:embeddingVector rdf:type owl:DatatypeProperty; # Actual storage is complex, this represents existence
+     rdfs:domain :KnowledgeUnit;
+     rdfs:range xsd:string . # Placeholder, real type is complex
+
+:bm25TermFrequencies rdf:type owl:DatatypeProperty; # Actual storage is complex
+      rdfs:domain :KnowledgeUnit;
+      rdfs:range xsd:string . # Placeholder
+
+:responsibleScalingLevel rdf:type owl:DatatypeProperty;
+      rdfs:domain :LongTermMemoryAgent;
+      rdfs:range xsd:string; # e.g., "ASL-2", "ASL-3"
+      rdfs:comment "Tracks the perceived ASL level based on agent's learning/autonomy capabilities." .

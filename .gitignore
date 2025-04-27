@@ -1,0 +1,41 @@
+# Environments
+.venv/
+.uv/
+env/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+
+# Secrets
+.env
+*.env
+
+# Build artifacts / Distribution
+build/
+dist/
+*.egg-info/
+wheels/
+pip-wheel-metadata/
+
+# Test Artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+*.prof
+*.lprof
+
+# Notebooks Checkpoints
+.ipynb_checkpoints
+
+# MCP
+mcp.json
