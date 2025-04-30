@@ -21,6 +21,8 @@ include = '\.pyi?$'
 [tool.ruff]
 target-version = "py310"
 line-length = 100
+
+[tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "C4", "ARG", "SIM", "UP"]
 ignore = ["E203"]  # Conflicts with black
 exclude = [
@@ -33,9 +35,12 @@ exclude = [
     "mcp.json"
 ]
 
-[tool.ruff.lint.isort]
-known-first-party = ["ltm_agent"]
+[tool.isort]
 profile = "black"
+known-first-party = ["ltm_agent"]
+
+[tool.ruff.isort]
+known-first-party = ["ltm_agent"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -43,5 +48,7 @@ pythonpath = [".","src"]
 markers = [
     "unit: marks tests as unit tests",
     "integration: marks tests as integration tests",
+    "asyncio: marks tests as asyncio tests",
 ]
 addopts = "-v --cov=src/ltm_agent"
+asyncio_mode = "auto"

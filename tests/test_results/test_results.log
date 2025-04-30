@@ -1,0 +1,2314 @@
+2025-04-27 11:56:39,024 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 11:56:39,024 - test_runner - INFO - Starting test run at: 2025-04-27 11:56:39
+2025-04-27 11:56:39,024 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 11:56:39,025 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 11:56:39,025 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 11:56:39,027 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 11:56:39,027 - test_runner - INFO - Importing core models...
+2025-04-27 11:56:39,208 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 11:56:39,208 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 11:56:39,216 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 11:56:39,216 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 11:56:39,217 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 11:56:39,217 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 11:56:39,661 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 11:56:39,661 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 11:56:39,661 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 11:56:39,661 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 11:56:39,665 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 11:56:39,667 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 11:56:39,670 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 11:56:39,673 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 11:56:39,673 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 11:56:39,673 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 11:56:39,674 - in_memory_store_tests - ERROR - Test failed: Search should return matching results
+2025-04-27 11:56:39,674 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 11:56:39,675 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 11:56:39,675 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 11:56:39,675 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 11:56:39,679 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 11:56:39,685 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 11:56:39,689 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 11:56:39,690 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 11:56:39,690 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 11:56:39,690 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 11:56:39,690 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 11:56:39,690 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 11:56:39,691 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 11:56:39,691 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 11:56:39,691 - test_runner - INFO - Running memory manager tests...
+2025-04-27 11:56:39,698 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 11:56:39,698 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 11:56:39,698 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 11:56:39,699 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 11:56:39,710 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 11:56:39,710 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 11:56:39,710 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 11:56:39,710 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 11:56:39,710 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 11:56:39,711 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 11:56:39,711 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 11:56:39,715 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 11:56:39,715 - ltm_agent.memory.manager - INFO - Added knowledge unit: 2e6fd658-304c-44a0-9df5-841d4d5cdf53
+2025-04-27 11:56:39,717 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 11:56:39,722 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 11:56:39,726 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 11:56:39,726 - ltm_agent.memory.manager - INFO - Added knowledge unit: 1e204587-fde0-4caf-a3c4-6a49e4968268
+2025-04-27 11:56:39,726 - ltm_agent.memory.manager - INFO - Added knowledge unit: 2a521d5c-832f-4246-b111-1e7934318421
+2025-04-27 11:56:39,726 - ltm_agent.memory.manager - INFO - Added knowledge unit: 92929019-3c8c-44f0-945e-7a892929356c
+2025-04-27 11:56:39,727 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 11:56:39,727 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 11:56:39,727 - memory_manager_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 11:56:39,727 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 11:56:39,727 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 11:56:39,728 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 11:56:39,728 - test_runner - INFO - Testing configuration loading...
+2025-04-27 11:56:39,731 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 11:56:39,731 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 11:56:39,731 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 11:56:39,731 - test_runner - INFO -   Log Level: INFO
+2025-04-27 11:56:39,732 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 11:56:39,732 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 11:56:39,732 - test_runner - INFO - Duration: 0.71 seconds
+2025-04-27 11:56:39,732 - test_runner - INFO -
+Component Results:
+2025-04-27 11:56:39,744 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 11:59:21,237 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 11:59:21,237 - test_runner - INFO - Starting test run at: 2025-04-27 11:59:21
+2025-04-27 11:59:21,237 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 11:59:21,238 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 11:59:21,238 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 11:59:21,238 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 11:59:21,238 - test_runner - INFO - Importing core models...
+2025-04-27 11:59:21,369 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 11:59:21,369 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 11:59:21,373 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 11:59:21,373 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 11:59:21,373 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 11:59:21,373 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 11:59:21,752 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 11:59:21,752 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 11:59:21,752 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 11:59:21,752 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 11:59:21,753 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 11:59:21,754 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 11:59:21,755 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 11:59:21,758 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 11:59:21,758 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 11:59:21,758 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 11:59:21,758 - in_memory_store_tests - ERROR - Test failed: Search should return matching results
+2025-04-27 11:59:21,758 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 11:59:21,758 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 11:59:21,758 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 11:59:21,758 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 11:59:21,759 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 11:59:21,760 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 11:59:21,761 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 11:59:21,761 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 11:59:21,761 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 11:59:21,761 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 11:59:21,761 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 11:59:21,761 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 11:59:21,761 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 11:59:21,761 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 11:59:21,761 - test_runner - INFO - Running memory manager tests...
+2025-04-27 11:59:21,765 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 11:59:21,765 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 11:59:21,765 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 11:59:21,765 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 11:59:21,774 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 11:59:21,775 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 11:59:21,775 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 11:59:21,775 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 11:59:21,775 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 11:59:21,775 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 11:59:21,775 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 11:59:21,776 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 11:59:21,776 - ltm_agent.memory.manager - INFO - Added knowledge unit: 6f4832ca-df46-4c84-8e33-9f7e56dde031
+2025-04-27 11:59:21,777 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 11:59:21,778 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 11:59:21,779 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 11:59:21,779 - ltm_agent.memory.manager - INFO - Added knowledge unit: e5dbca3b-adab-4552-9e97-37498d04b747
+2025-04-27 11:59:21,779 - ltm_agent.memory.manager - INFO - Added knowledge unit: 950289a7-3071-450a-894e-c9ff19712cd9
+2025-04-27 11:59:21,779 - ltm_agent.memory.manager - INFO - Added knowledge unit: 475eb1e0-e062-45c2-8337-df415ae6d632
+2025-04-27 11:59:21,779 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 11:59:21,779 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 11:59:21,779 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 11:59:21,781 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 11:59:21,781 - memory_manager_tests - ERROR - Test failed: Top result should be about memory
+2025-04-27 11:59:21,781 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 11:59:21,782 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 11:59:21,782 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 11:59:21,782 - test_runner - INFO - Testing configuration loading...
+2025-04-27 11:59:21,782 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 11:59:21,782 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 11:59:21,782 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 11:59:21,782 - test_runner - INFO -   Log Level: INFO
+2025-04-27 11:59:21,783 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 11:59:21,783 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 11:59:21,783 - test_runner - INFO - Duration: 0.55 seconds
+2025-04-27 11:59:21,783 - test_runner - INFO -
+Component Results:
+2025-04-27 11:59:21,789 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:02:35,454 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:02:35,454 - test_runner - INFO - Starting test run at: 2025-04-27 12:02:35
+2025-04-27 12:02:35,454 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:02:35,455 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:02:35,455 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:02:35,455 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:02:35,455 - test_runner - INFO - Importing core models...
+2025-04-27 12:02:35,608 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:02:35,609 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:02:35,609 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:02:35,628 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:02:35,628 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:02:35,629 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:02:35,629 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:02:36,092 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:02:36,092 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:02:36,092 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:02:36,092 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:02:36,093 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:02:36,093 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:02:36,093 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: 2161d5b8-1ee1-4bc4-987c-76700ff14c9e
+2025-04-27 12:02:36,093 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:02:36,093 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:02:36,094 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:02:36,094 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:02:36,094 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:02:36,094 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:02:36,094 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:02:36,094 - in_memory_store_tests - ERROR - Test failed: Search should return matching results
+2025-04-27 12:02:36,095 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:02:36,095 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:02:36,095 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:02:36,095 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:02:36,095 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:02:36,095 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:02:36,096 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:02:36,096 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:02:36,096 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:02:36,096 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:02:36,097 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:02:36,097 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:02:36,097 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:02:36,097 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:02:36,098 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:02:36,098 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:02:36,098 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:02:36,098 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:02:36,106 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:02:36,106 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:02:36,106 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:02:36,107 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:02:36,117 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:02:36,117 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:02:36,117 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:02:36,117 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:02:36,118 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:02:36,118 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:02:36,119 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:02:36,119 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:02:36,119 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:02:36,119 - ltm_agent.memory.manager - INFO - Added knowledge unit: 53770e86-f51d-421f-8aee-6a21d589ed0c
+2025-04-27 12:02:36,119 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: 53770e86-f51d-421f-8aee-6a21d589ed0c
+2025-04-27 12:02:36,120 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:02:36,120 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:02:36,120 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:02:36,120 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:02:36,120 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:02:36,120 - ltm_agent.memory.manager - INFO - Added knowledge unit: e445e1be-3ec1-4272-afc8-079faed227ef
+2025-04-27 12:02:36,120 - ltm_agent.memory.manager - INFO - Added knowledge unit: ccbf685d-a3c0-40c4-ba3c-f6c46edfcabf
+2025-04-27 12:02:36,120 - ltm_agent.memory.manager - INFO - Added knowledge unit: 885c86e1-90a8-42bd-a813-3654306d4d1d
+2025-04-27 12:02:36,120 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:02:36,120 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:02:36,121 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 4 relevant results
+2025-04-27 12:02:36,121 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:02:36,122 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:02:36,122 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:02:36,122 - memory_manager_tests - ERROR - Test failed: Top result should be about memory
+2025-04-27 12:02:36,122 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:02:36,122 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:02:36,122 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:02:36,123 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:02:36,123 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:02:36,123 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:02:36,123 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:02:36,123 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:02:36,123 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:02:36,123 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:02:36,124 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:02:36,124 - test_runner - INFO - Duration: 0.67 seconds
+2025-04-27 12:02:36,124 - test_runner - INFO -
+Component Results:
+2025-04-27 12:02:36,124 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:02:36,124 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:02:36,124 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:02:36,124 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:02:36,124 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:05:21,953 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:05:21,953 - test_runner - INFO - Starting test run at: 2025-04-27 12:05:21
+2025-04-27 12:05:21,953 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:05:21,953 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:05:21,953 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:05:21,953 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:05:21,953 - test_runner - INFO - Importing core models...
+2025-04-27 12:05:22,116 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:05:22,117 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:05:22,117 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:05:22,118 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:05:22,118 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:05:22,118 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:05:22,118 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:05:22,504 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:05:22,504 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:05:22,504 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:05:22,505 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: 77efb4de-ec04-40f2-8eed-7db5c7fbf720
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:05:22,505 - in_memory_store_tests - ERROR - Test failed: Search should return matching results
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:05:22,505 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:05:22,505 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO - PASSED: Similarity search test passed, top result: Python is great for machine learning applications (score: 0.2291)
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO -
+Testing text search...
+2025-04-27 12:05:22,506 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:05:22,506 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:05:22,507 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:05:22,507 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:05:22,507 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:05:22,507 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:05:22,507 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:05:22,507 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:05:22,516 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:05:22,516 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:05:22,516 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:05:22,516 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:05:22,516 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:05:22,516 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:05:22,516 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:05:22,516 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:05:22,516 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:05:22,516 - ltm_agent.memory.manager - INFO - Added knowledge unit: d2a84452-d36f-45d0-97e6-9ac78ca2aebb
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: d2a84452-d36f-45d0-97e6-9ac78ca2aebb
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:05:22,517 - ltm_agent.memory.manager - INFO - Added knowledge unit: 98476167-6e0b-414d-bf31-40cf7166d8f0
+2025-04-27 12:05:22,517 - ltm_agent.memory.manager - INFO - Added knowledge unit: e30b2297-a0d7-407c-b5e0-8b2179428393
+2025-04-27 12:05:22,517 - ltm_agent.memory.manager - INFO - Added knowledge unit: 721a40b3-3205-41c7-bb12-bd7bf8e9b0cd
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 4 relevant results
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:05:22,517 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:05:22,518 - memory_manager_tests - ERROR - Test failed: Top result should be about memory
+2025-04-27 12:05:22,518 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:05:22,518 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:05:22,518 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:05:22,518 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:05:22,518 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:05:22,518 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:05:22,518 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:05:22,518 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:05:22,518 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:05:22,518 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:05:22,518 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:05:22,518 - test_runner - INFO - Duration: 0.57 seconds
+2025-04-27 12:05:22,518 - test_runner - INFO -
+Component Results:
+2025-04-27 12:05:22,518 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:05:22,518 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:05:22,518 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:05:22,518 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:05:22,518 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:06:54,071 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:06:54,071 - test_runner - INFO - Starting test run at: 2025-04-27 12:06:54
+2025-04-27 12:06:54,071 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:06:54,072 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:06:54,072 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:06:54,072 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:06:54,073 - test_runner - INFO - Importing core models...
+2025-04-27 12:06:54,236 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:06:54,236 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:06:54,236 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:06:54,237 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:06:54,238 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:06:54,238 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:06:54,238 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:06:54,659 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:06:54,660 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:06:54,660 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:06:54,660 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:06:54,660 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:06:54,660 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:06:54,661 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: e5d94793-58af-4b8e-9448-f35946ebd909
+2025-04-27 12:06:54,661 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:06:54,661 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:06:54,661 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:06:54,662 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:06:54,662 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:06:54,662 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:06:54,662 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:06:54,662 - in_memory_store_tests - ERROR - Unexpected error: 'InMemoryStore' object has no attribute '_knowledge_units'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 114, in test_in_memory_store
+    search_results = await store.search("Python programming")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\base.py", line 148, in search
+    return await self._search_implementation(query, limit, filter_criteria)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 112, in _search_implementation
+    for ku in self._knowledge_units.values():
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'InMemoryStore' object has no attribute '_knowledge_units'
+2025-04-27 12:06:54,664 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:06:54,664 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:06:54,664 - in_memory_store_tests - ERROR - Unexpected error: Can't instantiate abstract class InMemoryVectorStore with abstract methods _search_implementation, _similarity_search_implementation
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 183, in test_in_memory_vector_store
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class InMemoryVectorStore with abstract methods _search_implementation, _similarity_search_implementation
+2025-04-27 12:06:54,664 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:06:54,665 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:06:54,665 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:06:54,665 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:06:54,665 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:06:54,666 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:06:54,666 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:06:54,666 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:06:54,667 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:06:54,675 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:06:54,675 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:06:54,675 - memory_manager_tests - ERROR - Unexpected error: Can't instantiate abstract class InMemoryVectorStore with abstract methods _search_implementation, _similarity_search_implementation
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_memory_manager.py", line 46, in test_memory_manager
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class InMemoryVectorStore with abstract methods _search_implementation, _similarity_search_implementation
+2025-04-27 12:06:54,676 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:06:54,676 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:06:54,676 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:06:54,676 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:06:54,676 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:06:54,677 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:06:54,677 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:06:54,678 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:06:54,678 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:06:54,678 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:06:54,678 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:06:54,678 - test_runner - INFO - Duration: 0.61 seconds
+2025-04-27 12:06:54,678 - test_runner - INFO -
+Component Results:
+2025-04-27 12:06:54,678 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:06:54,678 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:06:54,678 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:06:54,679 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:06:54,679 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:07:12,349 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:07:12,349 - test_runner - INFO - Starting test run at: 2025-04-27 12:07:12
+2025-04-27 12:07:12,349 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:07:12,349 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:07:12,349 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:07:12,349 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:07:12,349 - test_runner - INFO - Importing core models...
+2025-04-27 12:07:12,472 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:07:12,473 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:07:12,473 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:07:12,473 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:07:12,473 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:07:12,473 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:07:12,473 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:07:12,854 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:07:12,854 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:07:12,854 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:07:12,854 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:07:12,854 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:07:12,854 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:07:12,854 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: c43e44b9-54a8-4dc9-851e-bfbe6b862375
+2025-04-27 12:07:12,854 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:07:12,854 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:07:12,855 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:07:12,855 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:07:12,855 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:07:12,855 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:07:12,855 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:07:12,855 - in_memory_store_tests - ERROR - Unexpected error: 'InMemoryStore' object has no attribute '_knowledge_units'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 114, in test_in_memory_store
+    search_results = await store.search("Python programming")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\base.py", line 148, in search
+    return await self._search_implementation(query, limit, filter_criteria)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 112, in _search_implementation
+    for ku in self._knowledge_units.values():
+              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'InMemoryStore' object has no attribute '_knowledge_units'
+2025-04-27 12:07:12,858 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:07:12,858 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:07:12,858 - in_memory_store_tests - ERROR - Unexpected error: Can't instantiate abstract class InMemoryVectorStore with abstract methods _search_implementation, _similarity_search_implementation
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 183, in test_in_memory_vector_store
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class InMemoryVectorStore with abstract methods _search_implementation, _similarity_search_implementation
+2025-04-27 12:07:12,858 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:07:12,858 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:07:12,858 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:07:12,858 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:07:12,859 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:07:12,859 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:07:12,860 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:07:12,860 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:07:12,860 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:07:12,872 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:07:12,872 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:07:12,872 - memory_manager_tests - ERROR - Unexpected error: Can't instantiate abstract class InMemoryVectorStore with abstract methods _search_implementation, _similarity_search_implementation
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_memory_manager.py", line 46, in test_memory_manager
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class InMemoryVectorStore with abstract methods _search_implementation, _similarity_search_implementation
+2025-04-27 12:07:12,873 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:07:12,873 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:07:12,873 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:07:12,873 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:07:12,873 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:07:12,873 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:07:12,873 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:07:12,873 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:07:12,873 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:07:12,873 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:07:12,873 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:07:12,873 - test_runner - INFO - Duration: 0.52 seconds
+2025-04-27 12:07:12,873 - test_runner - INFO -
+Component Results:
+2025-04-27 12:07:12,873 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:07:12,873 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:07:12,874 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:07:12,874 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:07:12,874 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:08:12,700 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:08:12,700 - test_runner - INFO - Starting test run at: 2025-04-27 12:08:12
+2025-04-27 12:08:12,700 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:08:12,700 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:08:12,701 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:08:12,701 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:08:12,701 - test_runner - INFO - Importing core models...
+2025-04-27 12:08:12,821 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:08:12,822 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:08:12,822 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:08:12,823 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:08:12,823 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:08:12,823 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:08:12,823 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:08:13,229 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:08:13,229 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:08:13,229 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:08:13,230 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:08:13,230 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:08:13,230 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:08:13,230 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: a008f464-fdae-4126-a717-be6211f65719
+2025-04-27 12:08:13,231 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:08:13,231 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:08:13,231 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:08:13,231 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:08:13,231 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:08:13,231 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:08:13,232 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:08:13,232 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.6000)
+2025-04-27 12:08:13,232 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:08:13,232 - in_memory_store_tests - ERROR - Unexpected error: 'InMemoryStore' object has no attribute '_matches_filter'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 122, in test_in_memory_store
+    filtered_results = await store.search(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\base.py", line 148, in search
+    return await self._search_implementation(query, limit, filter_criteria)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 114, in _search_implementation
+    if filter_criteria and not self._matches_filter(ku, filter_criteria):
+                               ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'InMemoryStore' object has no attribute '_matches_filter'
+2025-04-27 12:08:13,234 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:08:13,234 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:08:13,234 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:08:13,234 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:08:13,234 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:08:13,235 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:08:13,235 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:08:13,235 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:08:13,235 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:08:13,235 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:08:13,236 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:08:13,236 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:08:13,236 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:08:13,237 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:08:13,237 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:08:13,237 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:08:13,237 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:08:13,237 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:08:13,238 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:08:13,238 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:08:13,239 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:08:13,239 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:08:13,247 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:08:13,247 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:08:13,247 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:08:13,247 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:08:13,248 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:08:13,248 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:08:13,248 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:08:13,248 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:08:13,248 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:08:13,249 - ltm_agent.memory.manager - INFO - Added knowledge unit: 7dbca670-c761-4b19-8016-b6d95a27197b
+2025-04-27 12:08:13,249 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: 7dbca670-c761-4b19-8016-b6d95a27197b
+2025-04-27 12:08:13,249 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:08:13,249 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:08:13,249 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:08:13,249 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:08:13,250 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:08:13,250 - ltm_agent.memory.manager - INFO - Added knowledge unit: 3e054177-c815-4abb-a0e8-ec9cd48cee50
+2025-04-27 12:08:13,250 - ltm_agent.memory.manager - INFO - Added knowledge unit: fd918b9c-6576-45f3-b94a-10b78ab0fde3
+2025-04-27 12:08:13,250 - ltm_agent.memory.manager - INFO - Added knowledge unit: 85eccb3f-de8b-47c1-b63e-f011523a958d
+2025-04-27 12:08:13,251 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:08:13,251 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:08:13,251 - memory_manager_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:08:13,251 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:08:13,251 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:08:13,252 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:08:13,252 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:08:13,252 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:08:13,252 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:08:13,252 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:08:13,252 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:08:13,253 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:08:13,253 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:08:13,253 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:08:13,253 - test_runner - INFO - Duration: 0.55 seconds
+2025-04-27 12:08:13,253 - test_runner - INFO -
+Component Results:
+2025-04-27 12:08:13,253 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:08:13,253 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:08:13,254 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:08:13,254 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:08:13,254 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:11:45,582 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:11:45,582 - test_runner - INFO - Starting test run at: 2025-04-27 12:11:45
+2025-04-27 12:11:45,582 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:11:45,582 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:11:45,582 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:11:45,582 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:11:45,582 - test_runner - INFO - Importing core models...
+2025-04-27 12:11:45,757 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:11:45,757 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:11:45,757 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:11:45,758 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:11:45,758 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:11:45,758 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:11:45,758 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:11:46,257 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:11:46,258 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: 9b421ec3-4e90-4da5-ba1f-2466c7a7f6ae
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:11:46,258 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:11:46,259 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.6000)
+2025-04-27 12:11:46,259 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:11:46,259 - in_memory_store_tests - ERROR - Unexpected error: 'InMemoryStore' object has no attribute '_matches_filter'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 122, in test_in_memory_store
+    filtered_results = await store.search(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\base.py", line 148, in search
+    return await self._search_implementation(query, limit, filter_criteria)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 114, in _search_implementation
+    if filter_criteria and not self._matches_filter(ku, filter_criteria):
+                               ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'InMemoryStore' object has no attribute '_matches_filter'
+2025-04-27 12:11:46,261 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:11:46,261 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:11:46,261 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:11:46,261 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:11:46,261 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:11:46,262 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:11:46,262 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:11:46,262 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:11:46,262 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:11:46,262 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:11:46,262 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:11:46,262 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:11:46,263 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:11:46,263 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:11:46,263 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:11:46,263 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:11:46,263 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:11:46,263 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:11:46,264 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:11:46,264 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:11:46,264 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:11:46,264 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:11:46,275 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:11:46,275 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:11:46,275 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:11:46,275 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:11:46,275 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:11:46,275 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:11:46,275 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:11:46,275 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:11:46,275 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:11:46,276 - ltm_agent.memory.manager - INFO - Added knowledge unit: 4a3c2854-794c-4214-b2ac-978bd4a21ab8
+2025-04-27 12:11:46,276 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: 4a3c2854-794c-4214-b2ac-978bd4a21ab8
+2025-04-27 12:11:46,276 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:11:46,276 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:11:46,276 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:11:46,276 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:11:46,276 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:11:46,276 - ltm_agent.memory.manager - INFO - Added knowledge unit: 6114b85f-0d31-438e-8e1a-bc49a5c52651
+2025-04-27 12:11:46,276 - ltm_agent.memory.manager - INFO - Added knowledge unit: 0d1d57a5-701a-4c9e-a99a-2494633ecb4b
+2025-04-27 12:11:46,276 - ltm_agent.memory.manager - INFO - Added knowledge unit: eac856f1-818b-4ac3-882a-7517d98df9ab
+2025-04-27 12:11:46,276 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:11:46,276 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:11:46,277 - memory_manager_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:11:46,277 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:11:46,277 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:11:46,277 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:11:46,277 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:11:46,277 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:11:46,277 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:11:46,277 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:11:46,277 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:11:46,278 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:11:46,278 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:11:46,278 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:11:46,278 - test_runner - INFO - Duration: 0.70 seconds
+2025-04-27 12:11:46,278 - test_runner - INFO -
+Component Results:
+2025-04-27 12:11:46,278 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:11:46,278 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:11:46,278 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:11:46,278 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:11:46,278 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:16:24,019 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:16:24,021 - test_runner - INFO - Starting test run at: 2025-04-27 12:16:24
+2025-04-27 12:16:24,021 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:16:24,022 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:16:24,022 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:16:24,023 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:16:24,024 - test_runner - INFO - Importing core models...
+2025-04-27 12:16:24,450 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:16:24,450 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:16:24,451 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:16:24,453 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:16:24,454 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:16:24,454 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:16:24,454 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:16:25,181 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:16:25,183 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:16:25,183 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:16:25,184 - in_memory_store_tests - ERROR - Unexpected error: 'InMemoryStore' object has no attribute 'initialized'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 49, in test_in_memory_store
+    assert store.initialized is False, "Store should not be initialized initially"
+           ^^^^^^^^^^^^^^^^^
+AttributeError: 'InMemoryStore' object has no attribute 'initialized'
+2025-04-27 12:16:25,185 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:16:25,185 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:16:25,185 - in_memory_store_tests - ERROR - Unexpected error: Can't instantiate abstract class InMemoryVectorStore with abstract methods _generate_embedding_implementation, initialize
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 183, in test_in_memory_vector_store
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class InMemoryVectorStore with abstract methods _generate_embedding_implementation, initialize
+2025-04-27 12:16:25,186 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:16:25,186 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:16:25,187 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:16:25,187 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:16:25,187 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:16:25,188 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:16:25,189 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:16:25,189 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:16:25,190 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:16:25,200 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:16:25,201 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:16:25,201 - memory_manager_tests - ERROR - Unexpected error: Can't instantiate abstract class InMemoryVectorStore with abstract methods _generate_embedding_implementation, initialize
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_memory_manager.py", line 46, in test_memory_manager
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class InMemoryVectorStore with abstract methods _generate_embedding_implementation, initialize
+2025-04-27 12:16:25,202 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:16:25,202 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:16:25,202 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:16:25,203 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:16:25,203 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:16:25,203 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:16:25,204 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:16:25,204 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:16:25,205 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:16:25,205 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:16:25,205 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:16:25,206 - test_runner - INFO - Duration: 1.19 seconds
+2025-04-27 12:16:25,206 - test_runner - INFO -
+Component Results:
+2025-04-27 12:16:25,207 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:16:25,207 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:16:25,207 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:16:25,208 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:16:25,208 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:16:50,049 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:16:50,049 - test_runner - INFO - Starting test run at: 2025-04-27 12:16:50
+2025-04-27 12:16:50,049 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:16:50,049 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:16:50,049 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:16:50,049 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:16:50,049 - test_runner - INFO - Importing core models...
+2025-04-27 12:16:50,167 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:16:50,167 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:16:50,167 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:16:50,168 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:16:50,168 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:16:50,168 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:16:50,168 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:16:50,583 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:16:50,583 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:16:50,583 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:16:50,583 - in_memory_store_tests - ERROR - Unexpected error: 'InMemoryStore' object has no attribute 'initialized'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 49, in test_in_memory_store
+    assert store.initialized is False, "Store should not be initialized initially"
+           ^^^^^^^^^^^^^^^^^
+AttributeError: 'InMemoryStore' object has no attribute 'initialized'
+2025-04-27 12:16:50,584 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:16:50,584 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:16:50,584 - in_memory_store_tests - ERROR - Unexpected error: Can't instantiate abstract class InMemoryVectorStore with abstract methods _generate_embedding_implementation, initialize
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 183, in test_in_memory_vector_store
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class InMemoryVectorStore with abstract methods _generate_embedding_implementation, initialize
+2025-04-27 12:16:50,584 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:16:50,584 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:16:50,584 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:16:50,584 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:16:50,584 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:16:50,585 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:16:50,585 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:16:50,585 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:16:50,585 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:16:50,596 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:16:50,597 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:16:50,597 - memory_manager_tests - ERROR - Unexpected error: Can't instantiate abstract class InMemoryVectorStore with abstract methods _generate_embedding_implementation, initialize
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_memory_manager.py", line 46, in test_memory_manager
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't instantiate abstract class InMemoryVectorStore with abstract methods _generate_embedding_implementation, initialize
+2025-04-27 12:16:50,598 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:16:50,598 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:16:50,598 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:16:50,599 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:16:50,599 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:16:50,599 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:16:50,599 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:16:50,599 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:16:50,599 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:16:50,599 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:16:50,599 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:16:50,599 - test_runner - INFO - Duration: 0.55 seconds
+2025-04-27 12:16:50,599 - test_runner - INFO -
+Component Results:
+2025-04-27 12:16:50,599 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:16:50,599 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:16:50,599 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:16:50,599 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:16:50,599 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:17:41,585 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:17:41,586 - test_runner - INFO - Starting test run at: 2025-04-27 12:17:41
+2025-04-27 12:17:41,586 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:17:41,586 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:17:41,586 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:17:41,587 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:17:41,587 - test_runner - INFO - Importing core models...
+2025-04-27 12:17:41,726 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:17:41,727 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:17:41,727 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:17:41,729 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:17:41,729 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:17:41,729 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:17:41,730 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:17:42,110 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:17:42,111 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:17:42,111 - in_memory_store_tests - ERROR - Unexpected error: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 45, in test_in_memory_store
+    store = InMemoryStore()
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 35, in __init__
+    super().__init__()
+TypeError: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+2025-04-27 12:17:42,112 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:17:42,113 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:17:42,113 - in_memory_store_tests - ERROR - Unexpected error: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 183, in test_in_memory_vector_store
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 215, in __init__
+    super().__init__()
+TypeError: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+2025-04-27 12:17:42,113 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:17:42,114 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:17:42,114 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:17:42,114 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:17:42,114 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:17:42,115 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:17:42,115 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:17:42,115 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:17:42,115 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:17:42,123 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:17:42,123 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:17:42,123 - memory_manager_tests - ERROR - Unexpected error: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_memory_manager.py", line 46, in test_memory_manager
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 215, in __init__
+    super().__init__()
+TypeError: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+2025-04-27 12:17:42,124 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:17:42,124 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:17:42,125 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:17:42,125 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:17:42,125 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:17:42,125 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:17:42,125 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:17:42,125 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:17:42,126 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:17:42,126 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:17:42,126 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:17:42,126 - test_runner - INFO - Duration: 0.54 seconds
+2025-04-27 12:17:42,126 - test_runner - INFO -
+Component Results:
+2025-04-27 12:17:42,126 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:17:42,126 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:17:42,126 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:17:42,127 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:17:42,127 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:18:11,222 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:18:11,223 - test_runner - INFO - Starting test run at: 2025-04-27 12:18:11
+2025-04-27 12:18:11,223 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:18:11,223 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:18:11,223 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:18:11,223 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:18:11,223 - test_runner - INFO - Importing core models...
+2025-04-27 12:18:11,375 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:18:11,375 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:18:11,375 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:18:11,377 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:18:11,377 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:18:11,377 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:18:11,377 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:18:11,814 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:18:11,814 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:18:11,814 - in_memory_store_tests - ERROR - Unexpected error: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 45, in test_in_memory_store
+    store = InMemoryStore()
+            ^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 35, in __init__
+    super().__init__()
+TypeError: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+2025-04-27 12:18:11,814 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:18:11,815 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:18:11,815 - in_memory_store_tests - ERROR - Unexpected error: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_in_memory_store.py", line 183, in test_in_memory_vector_store
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 215, in __init__
+    super().__init__()
+TypeError: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+2025-04-27 12:18:11,815 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:18:11,815 - in_memory_store_tests - INFO - InMemoryStore Tests: FAILED
+2025-04-27 12:18:11,815 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:18:11,815 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:18:11,815 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:18:11,816 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:18:11,816 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:18:11,816 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:18:11,816 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:18:11,824 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:18:11,824 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:18:11,824 - memory_manager_tests - ERROR - Unexpected error: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\test_memory_manager.py", line 46, in test_memory_manager
+    vector_store = InMemoryVectorStore(embedding_dim=10)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\memory\in_memory_store.py", line 215, in __init__
+    super().__init__()
+TypeError: BaseMemoryStore.__init__() missing 1 required positional argument: 'storage_backend'
+2025-04-27 12:18:11,825 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:18:11,825 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:18:11,825 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:18:11,825 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:18:11,825 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:18:11,825 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:18:11,825 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:18:11,825 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:18:11,825 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:18:11,825 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:18:11,825 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:18:11,825 - test_runner - INFO - Duration: 0.60 seconds
+2025-04-27 12:18:11,825 - test_runner - INFO -
+Component Results:
+2025-04-27 12:18:11,826 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:18:11,826 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:18:11,826 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:18:11,826 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:18:11,826 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:19:16,157 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:19:16,158 - test_runner - INFO - Starting test run at: 2025-04-27 12:19:16
+2025-04-27 12:19:16,158 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:19:16,158 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:19:16,158 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:19:16,159 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:19:16,159 - test_runner - INFO - Importing core models...
+2025-04-27 12:19:16,360 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:19:16,361 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:19:16,362 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:19:16,363 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:19:16,364 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:19:16,364 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:19:16,365 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:19:16,898 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:19:16,898 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:19:16,899 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:19:16,899 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:19:16,899 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:19:16,900 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:19:16,900 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: 5d5cc9a7-fcf2-4aff-b435-1f30bcb2f84b
+2025-04-27 12:19:16,900 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:19:16,901 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:19:16,901 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:19:16,901 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:19:16,902 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:19:16,902 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:19:16,902 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:19:16,903 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.8000)
+2025-04-27 12:19:16,903 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:19:16,903 - in_memory_store_tests - INFO - PASSED: Filter test passed, got 1 result(s) matching filter
+2025-04-27 12:19:16,903 - in_memory_store_tests - INFO -
+Testing list operation...
+2025-04-27 12:19:16,904 - in_memory_store_tests - INFO - PASSED: List test passed, found 4 total units
+2025-04-27 12:19:16,904 - in_memory_store_tests - INFO -
+Testing count operation...
+2025-04-27 12:19:16,904 - in_memory_store_tests - INFO - PASSED: Count test passed, total: 4, corpus: 2
+2025-04-27 12:19:16,904 - in_memory_store_tests - INFO -
+Testing delete operation...
+2025-04-27 12:19:16,904 - in_memory_store_tests - INFO - PASSED: Delete test passed, count before: 4, after: 3
+2025-04-27 12:19:16,905 - in_memory_store_tests - INFO -
+All InMemoryStore tests passed successfully!
+2025-04-27 12:19:16,905 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:19:16,905 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:19:16,905 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:19:16,905 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:19:16,906 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:19:16,906 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:19:16,906 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:19:16,906 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:19:16,907 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:19:16,907 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:19:16,907 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:19:16,908 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:19:16,908 - in_memory_store_tests - INFO - PASSED: Similarity search test passed, top result: Python is great for machine learning applications (score: 0.9000)
+2025-04-27 12:19:16,908 - in_memory_store_tests - INFO -
+Testing text search...
+2025-04-27 12:19:16,909 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:19:16,909 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:19:16,910 - in_memory_store_tests - INFO - InMemoryStore Tests: PASSED
+2025-04-27 12:19:16,910 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:19:16,910 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:19:16,910 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:19:16,911 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:19:16,912 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:19:16,912 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:19:16,912 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:19:16,922 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:19:16,922 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:19:16,922 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:19:16,923 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:19:16,923 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:19:16,923 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:19:16,923 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:19:16,923 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:19:16,924 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:19:16,924 - ltm_agent.memory.manager - INFO - Added knowledge unit: 715156bc-27a5-4e1d-a538-0e2ba1d1f4d4
+2025-04-27 12:19:16,924 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: 715156bc-27a5-4e1d-a538-0e2ba1d1f4d4
+2025-04-27 12:19:16,924 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:19:16,924 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:19:16,925 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:19:16,925 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:19:16,925 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:19:16,925 - ltm_agent.memory.manager - INFO - Added knowledge unit: 1cb71b87-2b54-4bbb-a8b0-4034750fea96
+2025-04-27 12:19:16,925 - ltm_agent.memory.manager - INFO - Added knowledge unit: 5bbc10fe-3754-46c0-81c7-e5fdc8921251
+2025-04-27 12:19:16,926 - ltm_agent.memory.manager - INFO - Added knowledge unit: 8f2770f5-69c9-485b-b3bd-348259fa3642
+2025-04-27 12:19:16,926 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:19:16,926 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:19:16,927 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 4 relevant results
+2025-04-27 12:19:16,927 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:19:16,927 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:19:16,928 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:19:16,928 - memory_manager_tests - INFO - PASSED: get_related_knowledge test passed
+2025-04-27 12:19:16,928 - memory_manager_tests - INFO -
+Testing list_knowledge operation...
+2025-04-27 12:19:16,928 - memory_manager_tests - INFO - PASSED: list_knowledge test passed, total: 4, action: 2
+2025-04-27 12:19:16,929 - memory_manager_tests - INFO -
+Testing count_knowledge operation...
+2025-04-27 12:19:16,929 - memory_manager_tests - INFO - PASSED: count_knowledge test passed, total: 4, action: 2
+2025-04-27 12:19:16,929 - memory_manager_tests - INFO -
+Testing delete_knowledge operation...
+2025-04-27 12:19:16,929 - memory_manager_tests - INFO - PASSED: delete_knowledge test passed, count before: 4, after: 3
+2025-04-27 12:19:16,929 - memory_manager_tests - INFO -
+All MemoryManager tests passed successfully!
+2025-04-27 12:19:16,929 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:19:16,929 - memory_manager_tests - INFO - MemoryManager Tests: PASSED
+2025-04-27 12:19:16,929 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:19:16,929 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:19:16,929 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:19:16,930 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:19:16,930 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:19:16,930 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:19:16,930 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:19:16,930 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:19:16,931 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:19:16,931 - test_runner - INFO - Duration: 0.77 seconds
+2025-04-27 12:19:16,931 - test_runner - INFO -
+Component Results:
+2025-04-27 12:19:16,932 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:19:16,932 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:19:16,932 - test_runner - INFO -   Memory Manager: PASSED
+2025-04-27 12:19:16,932 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:19:16,932 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:19:29,956 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:19:29,956 - test_runner - INFO - Starting test run at: 2025-04-27 12:19:29
+2025-04-27 12:19:29,956 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:19:29,956 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:19:29,956 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:19:29,956 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:19:29,956 - test_runner - INFO - Importing core models...
+2025-04-27 12:19:30,090 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:19:30,090 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:19:30,090 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:19:30,091 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:19:30,091 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:19:30,091 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:19:30,091 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:19:30,453 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:19:30,453 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:19:30,453 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:19:30,453 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:19:30,453 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:19:30,453 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: be36c0bb-e742-40b4-89dc-3ec2c18bd775
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.8000)
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:19:30,454 - in_memory_store_tests - INFO - PASSED: Filter test passed, got 1 result(s) matching filter
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO -
+Testing list operation...
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO - PASSED: List test passed, found 4 total units
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO -
+Testing count operation...
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO - PASSED: Count test passed, total: 4, corpus: 2
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO -
+Testing delete operation...
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO - PASSED: Delete test passed, count before: 4, after: 3
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO -
+All InMemoryStore tests passed successfully!
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:19:30,455 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:19:30,455 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:19:30,456 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:19:30,456 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:19:30,456 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:19:30,456 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:19:30,456 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:19:30,456 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:19:30,456 - in_memory_store_tests - INFO - PASSED: Similarity search test passed, top result: Python is great for machine learning applications (score: 0.9000)
+2025-04-27 12:19:30,456 - in_memory_store_tests - INFO -
+Testing text search...
+2025-04-27 12:19:30,456 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:19:30,457 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:19:30,457 - in_memory_store_tests - INFO - InMemoryStore Tests: PASSED
+2025-04-27 12:19:30,457 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:19:30,457 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:19:30,457 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:19:30,457 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:19:30,457 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:19:30,458 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:19:30,458 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:19:30,465 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:19:30,465 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:19:30,465 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:19:30,465 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:19:30,466 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:19:30,466 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:19:30,466 - ltm_agent.memory.manager - INFO - Added knowledge unit: 08ac5b85-3e66-4968-afe3-70caccd93f67
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: 08ac5b85-3e66-4968-afe3-70caccd93f67
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:19:30,466 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:19:30,466 - ltm_agent.memory.manager - INFO - Added knowledge unit: 25d5ae05-f835-4f2c-abde-7a7e96400533
+2025-04-27 12:19:30,466 - ltm_agent.memory.manager - INFO - Added knowledge unit: bf8d3952-1c0a-4fd9-b5dc-df4f528fc7aa
+2025-04-27 12:19:30,467 - ltm_agent.memory.manager - INFO - Added knowledge unit: ee5d7762-1454-42fe-8356-ffbdc7d401c9
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 3 relevant results
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO - PASSED: get_related_knowledge test passed
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO -
+Testing list_knowledge operation...
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO - PASSED: list_knowledge test passed, total: 4, action: 2
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO -
+Testing count_knowledge operation...
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO - PASSED: count_knowledge test passed, total: 4, action: 2
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO -
+Testing delete_knowledge operation...
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO - PASSED: delete_knowledge test passed, count before: 4, after: 3
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO -
+All MemoryManager tests passed successfully!
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:19:30,467 - memory_manager_tests - INFO - MemoryManager Tests: PASSED
+2025-04-27 12:19:30,467 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:19:30,467 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:19:30,467 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:19:30,467 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:19:30,467 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:19:30,467 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:19:30,467 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:19:30,468 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:19:30,468 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:19:30,468 - test_runner - INFO - Duration: 0.51 seconds
+2025-04-27 12:19:30,468 - test_runner - INFO -
+Component Results:
+2025-04-27 12:19:30,468 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:19:30,468 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:19:30,469 - test_runner - INFO -   Memory Manager: PASSED
+2025-04-27 12:19:30,469 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:19:30,469 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:20:39,755 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:20:39,756 - test_runner - INFO - Starting test run at: 2025-04-27 12:20:39
+2025-04-27 12:20:39,756 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:20:39,757 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:20:39,757 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:20:39,757 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:20:39,757 - test_runner - INFO - Importing core models...
+2025-04-27 12:20:39,903 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:20:39,903 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:20:39,903 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:20:39,905 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:20:39,905 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:20:39,905 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:20:39,905 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:20:40,291 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:20:40,292 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:20:40,292 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:20:40,292 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:20:40,292 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:20:40,292 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:20:40,292 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: 913e4963-4471-47e2-ae45-23df8813f46b
+2025-04-27 12:20:40,293 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:20:40,293 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:20:40,293 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:20:40,293 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:20:40,293 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:20:40,293 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:20:40,293 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:20:40,294 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.8000)
+2025-04-27 12:20:40,294 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:20:40,294 - in_memory_store_tests - INFO - PASSED: Filter test passed, got 1 result(s) matching filter
+2025-04-27 12:20:40,294 - in_memory_store_tests - INFO -
+Testing list operation...
+2025-04-27 12:20:40,294 - in_memory_store_tests - INFO - PASSED: List test passed, found 4 total units
+2025-04-27 12:20:40,295 - in_memory_store_tests - INFO -
+Testing count operation...
+2025-04-27 12:20:40,295 - in_memory_store_tests - INFO - PASSED: Count test passed, total: 4, corpus: 2
+2025-04-27 12:20:40,295 - in_memory_store_tests - INFO -
+Testing delete operation...
+2025-04-27 12:20:40,295 - in_memory_store_tests - INFO - PASSED: Delete test passed, count before: 4, after: 3
+2025-04-27 12:20:40,295 - in_memory_store_tests - INFO -
+All InMemoryStore tests passed successfully!
+2025-04-27 12:20:40,295 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:20:40,295 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:20:40,296 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:20:40,296 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:20:40,296 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:20:40,296 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:20:40,296 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:20:40,296 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:20:40,297 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:20:40,297 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:20:40,297 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:20:40,297 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:20:40,298 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:20:40,298 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:20:40,298 - in_memory_store_tests - INFO - InMemoryStore Tests: PASSED
+2025-04-27 12:20:40,298 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:20:40,298 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:20:40,298 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:20:40,299 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:20:40,299 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:20:40,299 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:20:40,300 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:20:40,307 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:20:40,308 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:20:40,308 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:20:40,308 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:20:40,308 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:20:40,308 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:20:40,309 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:20:40,309 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:20:40,309 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:20:40,309 - ltm_agent.memory.manager - INFO - Added knowledge unit: 89a1c623-78d5-4c3f-920a-8311fcc271e9
+2025-04-27 12:20:40,309 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: 89a1c623-78d5-4c3f-920a-8311fcc271e9
+2025-04-27 12:20:40,309 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:20:40,309 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:20:40,310 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:20:40,310 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:20:40,310 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:20:40,310 - ltm_agent.memory.manager - INFO - Added knowledge unit: 00a3176d-e644-4998-863f-35ab4b95f05a
+2025-04-27 12:20:40,310 - ltm_agent.memory.manager - INFO - Added knowledge unit: 22911126-6326-46ff-a754-eeba90ff3d1e
+2025-04-27 12:20:40,310 - ltm_agent.memory.manager - INFO - Added knowledge unit: 5cc31378-3302-4dba-9442-7ec050fa7985
+2025-04-27 12:20:40,311 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:20:40,311 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:20:40,312 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 2 relevant results
+2025-04-27 12:20:40,312 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:20:40,312 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:20:40,312 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:20:40,312 - memory_manager_tests - ERROR - Test failed: Top result should be about memory
+2025-04-27 12:20:40,313 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:20:40,313 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:20:40,313 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:20:40,314 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:20:40,314 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:20:40,314 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:20:40,314 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:20:40,314 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:20:40,314 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:20:40,314 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:20:40,314 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:20:40,315 - test_runner - INFO - Duration: 0.56 seconds
+2025-04-27 12:20:40,315 - test_runner - INFO -
+Component Results:
+2025-04-27 12:20:40,315 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:20:40,315 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:20:40,315 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:20:40,315 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:20:40,315 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:21:11,393 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:21:11,394 - test_runner - INFO - Starting test run at: 2025-04-27 12:21:11
+2025-04-27 12:21:11,394 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:21:11,394 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:21:11,394 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:21:11,394 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:21:11,394 - test_runner - INFO - Importing core models...
+2025-04-27 12:21:11,553 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:21:11,553 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:21:11,554 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:21:11,554 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:21:11,554 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:21:11,555 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:21:11,555 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:21:12,021 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:21:12,021 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:21:12,021 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:21:12,021 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:21:12,021 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:21:12,021 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:21:12,021 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: bd6521af-bfea-46f6-b75e-79b9b83bdd3d
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.8000)
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO - PASSED: Filter test passed, got 1 result(s) matching filter
+2025-04-27 12:21:12,022 - in_memory_store_tests - INFO -
+Testing list operation...
+2025-04-27 12:21:12,023 - in_memory_store_tests - INFO - PASSED: List test passed, found 4 total units
+2025-04-27 12:21:12,023 - in_memory_store_tests - INFO -
+Testing count operation...
+2025-04-27 12:21:12,023 - in_memory_store_tests - INFO - PASSED: Count test passed, total: 4, corpus: 2
+2025-04-27 12:21:12,023 - in_memory_store_tests - INFO -
+Testing delete operation...
+2025-04-27 12:21:12,023 - in_memory_store_tests - INFO - PASSED: Delete test passed, count before: 4, after: 3
+2025-04-27 12:21:12,024 - in_memory_store_tests - INFO -
+All InMemoryStore tests passed successfully!
+2025-04-27 12:21:12,024 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:21:12,024 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:21:12,024 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:21:12,024 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:21:12,024 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:21:12,024 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:21:12,025 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:21:12,026 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:21:12,026 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:21:12,027 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:21:12,027 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:21:12,028 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:21:12,028 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:21:12,028 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:21:12,028 - in_memory_store_tests - INFO - InMemoryStore Tests: PASSED
+2025-04-27 12:21:12,028 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:21:12,029 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:21:12,029 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:21:12,030 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:21:12,031 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:21:12,031 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:21:12,031 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:21:12,041 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:21:12,041 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:21:12,041 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:21:12,041 - ltm_agent.memory.manager - INFO - Added knowledge unit: f3d75d9b-5d72-4f02-bb05-96786827400d
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: f3d75d9b-5d72-4f02-bb05-96786827400d
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:21:12,041 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:21:12,042 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:21:12,042 - ltm_agent.memory.manager - INFO - Added knowledge unit: a3cfce62-38a1-4c5c-b33a-aa0e8e508321
+2025-04-27 12:21:12,042 - ltm_agent.memory.manager - INFO - Added knowledge unit: 027864c9-a601-4c93-9c9f-b94db511fbb4
+2025-04-27 12:21:12,042 - ltm_agent.memory.manager - INFO - Added knowledge unit: c5434495-7003-4a65-9963-f482a313a20b
+2025-04-27 12:21:12,042 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:21:12,042 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:21:12,043 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 2 relevant results
+2025-04-27 12:21:12,043 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:21:12,043 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:21:12,043 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:21:12,043 - memory_manager_tests - ERROR - Test failed: Top result should be about memory
+2025-04-27 12:21:12,044 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:21:12,044 - memory_manager_tests - INFO - MemoryManager Tests: FAILED
+2025-04-27 12:21:12,044 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:21:12,044 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:21:12,044 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:21:12,044 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:21:12,044 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:21:12,044 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:21:12,044 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:21:12,044 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:21:12,044 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:21:12,044 - test_runner - INFO - Duration: 0.65 seconds
+2025-04-27 12:21:12,044 - test_runner - INFO -
+Component Results:
+2025-04-27 12:21:12,044 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:21:12,044 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:21:12,044 - test_runner - INFO -   Memory Manager: FAILED
+2025-04-27 12:21:12,044 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:21:12,045 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:25:18,144 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:25:18,144 - test_runner - INFO - Starting test run at: 2025-04-27 12:25:18
+2025-04-27 12:25:18,144 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:25:18,145 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:25:18,145 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:25:18,145 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:25:18,145 - test_runner - INFO - Importing core models...
+2025-04-27 12:25:18,269 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:25:18,269 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:25:18,269 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:25:18,270 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:25:18,270 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:25:18,270 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:25:18,271 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:25:18,694 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:25:18,695 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:25:18,695 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:25:18,695 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:25:18,695 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:25:18,695 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:25:18,696 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: b0f694c9-5644-4967-a196-f013a956d669
+2025-04-27 12:25:18,696 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:25:18,696 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:25:18,696 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:25:18,696 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:25:18,696 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:25:18,697 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:25:18,697 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:25:18,697 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.8000)
+2025-04-27 12:25:18,697 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:25:18,697 - in_memory_store_tests - INFO - PASSED: Filter test passed, got 1 result(s) matching filter
+2025-04-27 12:25:18,697 - in_memory_store_tests - INFO -
+Testing list operation...
+2025-04-27 12:25:18,698 - in_memory_store_tests - INFO - PASSED: List test passed, found 4 total units
+2025-04-27 12:25:18,698 - in_memory_store_tests - INFO -
+Testing count operation...
+2025-04-27 12:25:18,698 - in_memory_store_tests - INFO - PASSED: Count test passed, total: 4, corpus: 2
+2025-04-27 12:25:18,698 - in_memory_store_tests - INFO -
+Testing delete operation...
+2025-04-27 12:25:18,698 - in_memory_store_tests - INFO - PASSED: Delete test passed, count before: 4, after: 3
+2025-04-27 12:25:18,698 - in_memory_store_tests - INFO -
+All InMemoryStore tests passed successfully!
+2025-04-27 12:25:18,698 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:25:18,699 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:25:18,699 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:25:18,699 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:25:18,699 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:25:18,699 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:25:18,699 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:25:18,700 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:25:18,700 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:25:18,700 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:25:18,700 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:25:18,701 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:25:18,824 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:25:18,825 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:25:18,825 - in_memory_store_tests - INFO - InMemoryStore Tests: PASSED
+2025-04-27 12:25:18,825 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:25:18,825 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:25:18,826 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:25:18,827 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:25:18,827 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:25:18,827 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:25:18,828 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:25:18,840 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:25:18,840 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:25:18,840 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:25:18,841 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:25:18,841 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:25:18,841 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:25:18,841 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:25:18,841 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:25:18,841 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:25:18,842 - ltm_agent.memory.manager - INFO - Added knowledge unit: 6d215190-3656-4185-a1c3-3202e1482fb8
+2025-04-27 12:25:18,842 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: 6d215190-3656-4185-a1c3-3202e1482fb8
+2025-04-27 12:25:18,842 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:25:18,843 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:25:18,843 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:25:18,843 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:25:18,843 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:25:18,844 - ltm_agent.memory.manager - INFO - Added knowledge unit: edd45412-7c7e-467c-97b0-c7706dc9be4e
+2025-04-27 12:25:18,844 - ltm_agent.memory.manager - INFO - Added knowledge unit: 6d380ab6-c771-4341-8268-7d0a487424d1
+2025-04-27 12:25:18,844 - ltm_agent.memory.manager - INFO - Added knowledge unit: 1ab22302-13b2-4485-8a29-4cc1bd28f012
+2025-04-27 12:25:18,844 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:25:18,845 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:25:18,845 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 3 relevant results
+2025-04-27 12:25:18,845 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:25:18,845 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:25:18,846 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:25:18,853 - memory_manager_tests - INFO - PASSED: get_related_knowledge test passed
+2025-04-27 12:25:18,853 - memory_manager_tests - INFO -
+Testing list_knowledge operation...
+2025-04-27 12:25:18,854 - memory_manager_tests - INFO - PASSED: list_knowledge test passed, total: 4, action: 2
+2025-04-27 12:25:18,854 - memory_manager_tests - INFO -
+Testing count_knowledge operation...
+2025-04-27 12:25:18,854 - memory_manager_tests - INFO - PASSED: count_knowledge test passed, total: 4, action: 2
+2025-04-27 12:25:18,855 - memory_manager_tests - INFO -
+Testing delete_knowledge operation...
+2025-04-27 12:25:18,855 - memory_manager_tests - INFO - PASSED: delete_knowledge test passed, count before: 4, after: 3
+2025-04-27 12:25:18,856 - memory_manager_tests - INFO -
+All MemoryManager tests passed successfully!
+2025-04-27 12:25:18,856 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:25:18,856 - memory_manager_tests - INFO - MemoryManager Tests: PASSED
+2025-04-27 12:25:18,856 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:25:18,857 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:25:18,857 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:25:18,857 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:25:18,857 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:25:18,857 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:25:18,858 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:25:18,858 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:25:18,858 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:25:18,858 - test_runner - INFO - Duration: 0.71 seconds
+2025-04-27 12:25:18,858 - test_runner - INFO -
+Component Results:
+2025-04-27 12:25:18,858 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:25:18,858 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:25:18,858 - test_runner - INFO -   Memory Manager: PASSED
+2025-04-27 12:25:18,859 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:25:18,859 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:26:20,728 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:26:20,729 - test_runner - INFO - Starting test run at: 2025-04-27 12:26:20
+2025-04-27 12:26:20,729 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:26:20,729 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:26:20,729 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:26:20,730 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:26:20,730 - test_runner - INFO - Importing core models...
+2025-04-27 12:26:20,851 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:26:20,852 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:26:20,852 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:26:20,853 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:26:20,853 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:26:20,853 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:26:20,853 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:26:21,222 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:26:21,223 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:26:21,223 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:26:21,223 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:26:21,223 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:26:21,224 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:26:21,224 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: d5191e2c-1014-4ffc-9584-157bc2577589
+2025-04-27 12:26:21,224 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:26:21,224 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:26:21,224 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:26:21,225 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:26:21,225 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:26:21,225 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:26:21,225 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:26:21,225 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.8000)
+2025-04-27 12:26:21,226 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:26:21,226 - in_memory_store_tests - INFO - PASSED: Filter test passed, got 1 result(s) matching filter
+2025-04-27 12:26:21,226 - in_memory_store_tests - INFO -
+Testing list operation...
+2025-04-27 12:26:21,227 - in_memory_store_tests - INFO - PASSED: List test passed, found 4 total units
+2025-04-27 12:26:21,227 - in_memory_store_tests - INFO -
+Testing count operation...
+2025-04-27 12:26:21,227 - in_memory_store_tests - INFO - PASSED: Count test passed, total: 4, corpus: 2
+2025-04-27 12:26:21,227 - in_memory_store_tests - INFO -
+Testing delete operation...
+2025-04-27 12:26:21,227 - in_memory_store_tests - INFO - PASSED: Delete test passed, count before: 4, after: 3
+2025-04-27 12:26:21,228 - in_memory_store_tests - INFO -
+All InMemoryStore tests passed successfully!
+2025-04-27 12:26:21,228 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:26:21,228 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:26:21,228 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:26:21,228 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:26:21,229 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:26:21,229 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:26:21,229 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:26:21,229 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:26:21,229 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:26:21,229 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:26:21,230 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:26:21,230 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:26:21,356 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:26:21,356 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:26:21,357 - in_memory_store_tests - INFO - InMemoryStore Tests: PASSED
+2025-04-27 12:26:21,357 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:26:21,357 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:26:21,358 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:26:21,359 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:26:21,359 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:26:21,359 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:26:21,360 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:26:21,371 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:26:21,372 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:26:21,372 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:26:21,372 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:26:21,372 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:26:21,372 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:26:21,373 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:26:21,373 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:26:21,373 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:26:21,373 - ltm_agent.memory.manager - INFO - Added knowledge unit: c9304307-e88a-4512-8cbe-d1e1870cd388
+2025-04-27 12:26:21,373 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: c9304307-e88a-4512-8cbe-d1e1870cd388
+2025-04-27 12:26:21,373 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:26:21,374 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:26:21,374 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:26:21,374 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:26:21,374 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:26:21,374 - ltm_agent.memory.manager - INFO - Added knowledge unit: 07120652-cbbb-42aa-95d3-22c892f0c7f5
+2025-04-27 12:26:21,375 - ltm_agent.memory.manager - INFO - Added knowledge unit: 58e2189d-e07c-4c61-95fb-88ca2e43af87
+2025-04-27 12:26:21,375 - ltm_agent.memory.manager - INFO - Added knowledge unit: 0d62b5b8-6b63-42af-9686-526ac04f3a12
+2025-04-27 12:26:21,375 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:26:21,375 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:26:21,376 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 3 relevant results
+2025-04-27 12:26:21,376 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:26:21,377 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:26:21,377 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:26:21,382 - memory_manager_tests - INFO - PASSED: get_related_knowledge test passed
+2025-04-27 12:26:21,382 - memory_manager_tests - INFO -
+Testing list_knowledge operation...
+2025-04-27 12:26:21,383 - memory_manager_tests - INFO - PASSED: list_knowledge test passed, total: 4, action: 2
+2025-04-27 12:26:21,383 - memory_manager_tests - INFO -
+Testing count_knowledge operation...
+2025-04-27 12:26:21,383 - memory_manager_tests - INFO - PASSED: count_knowledge test passed, total: 4, action: 2
+2025-04-27 12:26:21,383 - memory_manager_tests - INFO -
+Testing delete_knowledge operation...
+2025-04-27 12:26:21,383 - memory_manager_tests - INFO - PASSED: delete_knowledge test passed, count before: 4, after: 3
+2025-04-27 12:26:21,384 - memory_manager_tests - INFO -
+All MemoryManager tests passed successfully!
+2025-04-27 12:26:21,384 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:26:21,384 - memory_manager_tests - INFO - MemoryManager Tests: PASSED
+2025-04-27 12:26:21,384 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:26:21,384 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:26:21,384 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:26:21,384 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:26:21,384 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:26:21,385 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:26:21,385 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:26:21,385 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:26:21,385 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:26:21,385 - test_runner - INFO - Duration: 0.66 seconds
+2025-04-27 12:26:21,385 - test_runner - INFO -
+Component Results:
+2025-04-27 12:26:21,385 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:26:21,385 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:26:21,385 - test_runner - INFO -   Memory Manager: PASSED
+2025-04-27 12:26:21,386 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:26:21,386 - test_runner - INFO -
+==================== END OF TEST RUN ====================
+2025-04-27 12:28:26,252 - test_runner - INFO -
+==================== LTM AGENT TEST SUITE ====================
+2025-04-27 12:28:26,253 - test_runner - INFO - Starting test run at: 2025-04-27 12:28:26
+2025-04-27 12:28:26,253 - test_runner - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:28:26,254 - test_runner - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:28:26,254 - test_runner - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:28:26,254 - test_runner - INFO -
+==================== RUNNING CORE MODELS TESTS ====================
+2025-04-27 12:28:26,254 - test_runner - INFO - Importing core models...
+2025-04-27 12:28:26,407 - test_runner - INFO - PASSED: Core models tests
+2025-04-27 12:28:26,408 - test_runner - INFO -
+==================== RUNNING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:28:26,408 - test_runner - INFO - Running in-memory store tests...
+2025-04-27 12:28:26,408 - in_memory_store_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:28:26,409 - in_memory_store_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:28:26,409 - in_memory_store_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:28:26,410 - in_memory_store_tests - INFO -
+==================== STARTING IN-MEMORY STORE TESTS ====================
+2025-04-27 12:28:26,913 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY STORE ====================
+2025-04-27 12:28:26,914 - in_memory_store_tests - INFO - Creating InMemoryStore instance...
+2025-04-27 12:28:26,914 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:28:26,915 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory store
+2025-04-27 12:28:26,915 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:28:26,915 - in_memory_store_tests - INFO -
+Testing add operation...
+2025-04-27 12:28:26,915 - in_memory_store_tests - INFO - PASSED: Add test passed, created knowledge unit with ID: 9116ecb9-2048-4603-a245-b5403e706092
+2025-04-27 12:28:26,916 - in_memory_store_tests - INFO -
+Testing get operation...
+2025-04-27 12:28:26,916 - in_memory_store_tests - INFO - PASSED: Get test passed, retrieved: This is a test knowledge unit for the in-memory store
+2025-04-27 12:28:26,916 - in_memory_store_tests - INFO -
+Testing update operation...
+2025-04-27 12:28:26,916 - in_memory_store_tests - INFO - PASSED: Update test passed, updated content: This is an updated knowledge unit
+2025-04-27 12:28:26,916 - in_memory_store_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:28:26,917 - in_memory_store_tests - INFO - Added 3 additional knowledge units
+2025-04-27 12:28:26,917 - in_memory_store_tests - INFO -
+Testing search operation...
+2025-04-27 12:28:26,917 - in_memory_store_tests - INFO - PASSED: Search test passed, top result: Python is a versatile programming language (score: 0.8000)
+2025-04-27 12:28:26,917 - in_memory_store_tests - INFO -
+Testing search with filtering...
+2025-04-27 12:28:26,917 - in_memory_store_tests - INFO - PASSED: Filter test passed, got 1 result(s) matching filter
+2025-04-27 12:28:26,918 - in_memory_store_tests - INFO -
+Testing list operation...
+2025-04-27 12:28:26,918 - in_memory_store_tests - INFO - PASSED: List test passed, found 4 total units
+2025-04-27 12:28:26,918 - in_memory_store_tests - INFO -
+Testing count operation...
+2025-04-27 12:28:26,918 - in_memory_store_tests - INFO - PASSED: Count test passed, total: 4, corpus: 2
+2025-04-27 12:28:26,918 - in_memory_store_tests - INFO -
+Testing delete operation...
+2025-04-27 12:28:26,919 - in_memory_store_tests - INFO - PASSED: Delete test passed, count before: 4, after: 3
+2025-04-27 12:28:26,919 - in_memory_store_tests - INFO -
+All InMemoryStore tests passed successfully!
+2025-04-27 12:28:26,919 - in_memory_store_tests - INFO -
+==================== TESTING IN-MEMORY VECTOR STORE ====================
+2025-04-27 12:28:26,919 - in_memory_store_tests - INFO - Creating InMemoryVectorStore instance...
+2025-04-27 12:28:26,919 - in_memory_store_tests - INFO - Testing initialization...
+2025-04-27 12:28:26,919 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:28:26,920 - in_memory_store_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:28:26,920 - in_memory_store_tests - INFO -
+Testing embedding generation...
+2025-04-27 12:28:26,920 - in_memory_store_tests - INFO - PASSED: Embedding generation test passed, dimension: 10
+2025-04-27 12:28:26,920 - in_memory_store_tests - INFO -
+Testing add with automatic embedding...
+2025-04-27 12:28:26,920 - in_memory_store_tests - INFO - PASSED: Automatic embedding test passed
+2025-04-27 12:28:26,921 - in_memory_store_tests - INFO -
+Adding knowledge units for similarity search...
+2025-04-27 12:28:26,921 - in_memory_store_tests - INFO - Added 3 additional knowledge units with embeddings
+2025-04-27 12:28:26,921 - in_memory_store_tests - INFO -
+Testing similarity search...
+2025-04-27 12:28:27,132 - in_memory_store_tests - ERROR - Test failed: Top result should be relevant to query
+2025-04-27 12:28:27,133 - in_memory_store_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:28:27,133 - in_memory_store_tests - INFO - InMemoryStore Tests: PASSED
+2025-04-27 12:28:27,133 - in_memory_store_tests - INFO - InMemoryVectorStore Tests: FAILED
+2025-04-27 12:28:27,134 - test_runner - INFO -
+==================== RUNNING MEMORY MANAGER TESTS ====================
+2025-04-27 12:28:27,134 - test_runner - INFO - Running memory manager tests...
+2025-04-27 12:28:27,135 - memory_manager_tests - INFO - Python version: 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]
+2025-04-27 12:28:27,135 - memory_manager_tests - INFO - Python executable: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Scripts\python.exe
+2025-04-27 12:28:27,135 - memory_manager_tests - INFO - Working directory: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval
+2025-04-27 12:28:27,136 - memory_manager_tests - INFO -
+==================== STARTING MEMORY MANAGER TESTS ====================
+2025-04-27 12:28:27,146 - memory_manager_tests - INFO -
+==================== TESTING MEMORY MANAGER ====================
+2025-04-27 12:28:27,146 - memory_manager_tests - INFO - Creating InMemoryVectorStore for testing...
+2025-04-27 12:28:27,147 - memory_manager_tests - INFO - Creating MemoryManager instance...
+2025-04-27 12:28:27,147 - ltm_agent.memory.manager - INFO - Initialized MemoryManager with InMemoryVectorStore
+2025-04-27 12:28:27,147 - memory_manager_tests - INFO - Testing initialization...
+2025-04-27 12:28:27,147 - ltm_agent.memory.in_memory_store - INFO - Initializing in-memory vector store with embedding dim 10
+2025-04-27 12:28:27,148 - ltm_agent.memory.manager - INFO - MemoryManager initialized
+2025-04-27 12:28:27,148 - memory_manager_tests - INFO - PASSED: Initialization test passed
+2025-04-27 12:28:27,148 - memory_manager_tests - INFO -
+Testing add_knowledge operation...
+2025-04-27 12:28:27,149 - ltm_agent.memory.manager - INFO - Added knowledge unit: fc5e1174-2ada-4ed7-b3e2-c82e727ede8a
+2025-04-27 12:28:27,149 - memory_manager_tests - INFO - PASSED: add_knowledge test passed, created knowledge with ID: fc5e1174-2ada-4ed7-b3e2-c82e727ede8a
+2025-04-27 12:28:27,149 - memory_manager_tests - INFO -
+Testing retrieve_knowledge operation...
+2025-04-27 12:28:27,149 - memory_manager_tests - INFO - PASSED: retrieve_knowledge test passed
+2025-04-27 12:28:27,149 - memory_manager_tests - INFO -
+Testing update_knowledge operation...
+2025-04-27 12:28:27,150 - memory_manager_tests - INFO - PASSED: update_knowledge test passed
+2025-04-27 12:28:27,150 - memory_manager_tests - INFO -
+Adding additional knowledge units for search tests...
+2025-04-27 12:28:27,150 - ltm_agent.memory.manager - INFO - Added knowledge unit: 480fc0f7-57f2-478a-af13-f839817a9605
+2025-04-27 12:28:27,150 - ltm_agent.memory.manager - INFO - Added knowledge unit: 31ef4941-1833-441a-af18-45a4f916a2be
+2025-04-27 12:28:27,150 - ltm_agent.memory.manager - INFO - Added knowledge unit: ad008bdb-2020-49f1-8d83-982911553786
+2025-04-27 12:28:27,151 - memory_manager_tests - INFO - Added 3 additional knowledge entries
+2025-04-27 12:28:27,151 - memory_manager_tests - INFO -
+Testing search_knowledge operation...
+2025-04-27 12:28:27,151 - memory_manager_tests - INFO - PASSED: search_knowledge test passed, found 3 relevant results
+2025-04-27 12:28:27,151 - memory_manager_tests - INFO -
+Testing search with source filtering...
+2025-04-27 12:28:27,152 - memory_manager_tests - INFO - PASSED: Filtered search test passed
+2025-04-27 12:28:27,152 - memory_manager_tests - INFO -
+Testing get_related_knowledge operation...
+2025-04-27 12:28:27,158 - memory_manager_tests - INFO - PASSED: get_related_knowledge test passed
+2025-04-27 12:28:27,158 - memory_manager_tests - INFO -
+Testing list_knowledge operation...
+2025-04-27 12:28:27,158 - memory_manager_tests - INFO - PASSED: list_knowledge test passed, total: 4, action: 2
+2025-04-27 12:28:27,158 - memory_manager_tests - INFO -
+Testing count_knowledge operation...
+2025-04-27 12:28:27,159 - memory_manager_tests - INFO - PASSED: count_knowledge test passed, total: 4, action: 2
+2025-04-27 12:28:27,159 - memory_manager_tests - INFO -
+Testing delete_knowledge operation...
+2025-04-27 12:28:27,160 - memory_manager_tests - INFO - PASSED: delete_knowledge test passed, count before: 4, after: 3
+2025-04-27 12:28:27,160 - memory_manager_tests - INFO -
+All MemoryManager tests passed successfully!
+2025-04-27 12:28:27,160 - memory_manager_tests - INFO -
+==================== TEST RESULTS ====================
+2025-04-27 12:28:27,160 - memory_manager_tests - INFO - MemoryManager Tests: PASSED
+2025-04-27 12:28:27,160 - test_runner - INFO -
+==================== RUNNING CONFIGURATION TESTS ====================
+2025-04-27 12:28:27,160 - test_runner - INFO - Testing configuration loading...
+2025-04-27 12:28:27,161 - test_runner - INFO - PASSED: Configuration tests
+2025-04-27 12:28:27,161 - test_runner - INFO -   Vector DB Path: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\local_chroma
+2025-04-27 12:28:27,161 - test_runner - INFO -   Embedding Model: voyage-code-2
+2025-04-27 12:28:27,161 - test_runner - INFO -   Chunk Size: 512
+2025-04-27 12:28:27,161 - test_runner - INFO -   Log Level: INFO
+2025-04-27 12:28:27,162 - test_runner - INFO -
+==================== TEST RESULTS SUMMARY ====================
+2025-04-27 12:28:27,162 - test_runner - INFO - Overall Status: FAILED
+2025-04-27 12:28:27,162 - test_runner - INFO - Duration: 0.91 seconds
+2025-04-27 12:28:27,162 - test_runner - INFO -
+Component Results:
+2025-04-27 12:28:27,162 - test_runner - INFO -   Core Models: PASSED
+2025-04-27 12:28:27,163 - test_runner - INFO -   In-Memory Store: FAILED
+2025-04-27 12:28:27,163 - test_runner - INFO -   Memory Manager: PASSED
+2025-04-27 12:28:27,163 - test_runner - INFO -   Configuration: PASSED
+2025-04-27 12:28:27,163 - test_runner - INFO -
+==================== END OF TEST RUN ====================

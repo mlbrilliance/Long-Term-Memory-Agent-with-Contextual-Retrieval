@@ -1,0 +1,2 @@
+ValidationError loaded from: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Lib\site-packages\pydantic_core\_pydantic_core.cp311-win_amd64.pyd
+ValidationError MRO: (<class 'pydantic_core._pydantic_core.ValidationError'>, <class 'ValueError'>, <class 'Exception'>, <class 'BaseException'>, <class 'object'>)

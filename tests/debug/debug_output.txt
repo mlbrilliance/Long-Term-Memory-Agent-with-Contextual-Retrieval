@@ -1,0 +1,12 @@
+About to call Settings.from_env()
+Exception type: ValueError
+Exception message: Missing required fields: anthropic_api_key, perplexity_api_key
+Exception dir: ['__cause__', '__class__', '__context__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__suppress_context__', '__traceback__', 'add_note', 'args', 'with_traceback']
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\debug_script.py", line 19, in <module>
+    settings = Settings.from_env()
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\core\config.py", line 120, in from_env
+    raise ValueError(error_message)
+ValueError: Missing required fields: anthropic_api_key, perplexity_api_key

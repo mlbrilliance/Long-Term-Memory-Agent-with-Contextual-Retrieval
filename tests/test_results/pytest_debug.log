@@ -1,0 +1,26 @@
+ValidationError loaded from: C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\.venv\Lib\site-packages\pydantic_core\_pydantic_core.cp311-win_amd64.pyd
+ValidationError MRO: (<class 'pydantic_core._pydantic_core.ValidationError'>, <class 'ValueError'>, <class 'Exception'>, <class 'BaseException'>, <class 'object'>)
+
+=== Testing test_required_env_vars ===
+CAUGHT EXCEPTION: TypeError
+Exception message: ValidationError.__new__() missing 1 required positional argument: 'line_errors'
+Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\pydantic_debug.py", line 28, in <module>
+    Settings.from_env()
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\core\config.py", line 120, in from_env
+    raise ValidationError(error_str)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ValidationError.__new__() missing 1 required positional argument: 'line_errors'
+
+
+=== Testing with pytest directly ===
+PYTEST EXCEPTION: TypeError
+Message: ValidationError.__new__() missing 1 required positional argument: 'line_errors'
+Traceback (most recent call last):
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\pydantic_debug.py", line 47, in <module>
+    Settings.from_env()
+  File "C:\Users\linki\OneDrive\Documents_encrypted\Documents\WindSurf_Projects\langchain-contextual-retrieval\src\ltm_agent\core\config.py", line 120, in from_env
+    raise ValidationError(error_str)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ValidationError.__new__() missing 1 required positional argument: 'line_errors'

@@ -39,3 +39,84 @@ htmlcov/
 
 # MCP
 mcp.json
+
+# Logs and reports - comprehensive
+logs/
+**/*.log
+**/logs/**
+**/*/logs/**
+**/*.txt
+**/test_output*.txt
+**/eval_*.txt
+**/demo_output*.txt
+**/error_*.txt
+
+# Test results and reports - all directories
+test_results/
+**/test_results/**
+tests/*/reports/*.json
+**/reports/*.json
+memory_test_report_*.json
+*_test_result.txt
+error_test_result.txt
+
+# Benchmark and performance data
+benchmark_results/
+benchmark/*.json
+benchmark/results/
+performance_reports/
+performance_results/
+**/evaluation_*/
+**/evaluation_*/**
+
+# Temporary scripts and utility files
+cleanup_logs.bat
+batch_demo.py
+
+# Memory database files and storage
+*.db
+*.sqlite
+*.sqlite3
+memory_store.json
+example_vector_store.db
+**/temp/*.db
+**/temp/*.pkl
+
+# Large embedding files
+embeddings/
+*.bin
+*.vec
+*.npy
+
+# Cached test results
+.memory_cache/
+memory_cache/
+
+# Experiment artifacts
+experiments/
+
+# Claude task master - external tool
+claude-task-master/
+
+# Generated documentation
+docs/memory_system_improvements.md
+
+# Local configuration
+config/
+**/config/*.yaml
+**/config/*.yml
+
+# Data files (usually large and specific to user)
+data/
+**/data/**
+
+# Auto-generated test directories
+tests/memory_system/
+
+# Demo files
+*_demo_output.txt
+*_simulation_results.json
+**/demos/**
+
+# Operation-specific files
+**/visualizations/**
