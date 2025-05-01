@@ -20,6 +20,9 @@ __pycache__/
 .env
 *.env
 
+# Claude Task Master folder
+claude-task-master/
+
 # Build artifacts / Distribution
 build/
 dist/
@@ -95,9 +98,6 @@ memory_cache/
 # Experiment artifacts
 experiments/
 
-# Claude task master - external tool
-claude-task-master/
-
 # Generated documentation
 docs/memory_system_improvements.md
 
@@ -120,3 +120,6 @@ tests/memory_system/
 
 # Operation-specific files
 **/visualizations/**
+
+# MCP
+mcp.json
