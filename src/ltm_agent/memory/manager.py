@@ -140,84 +140,57 @@ class MemoryManager:
 
     async def process_potential_knowledge(
         self,
-        content: str,
-        source: str = "action",
+        content: Any,
+        source: str = "agent",
         context: str = "",
         metadata: dict[str, Any] | None = None,
-        similarity_threshold: float = 0.85,
-        update_if_similar: bool = True,
     ) -> str:
         """
-        Process new potential knowledge text, deciding whether to add or update.
-
-        This is the main orchestration method that handles the decision logic
-        and delegates to the appropriate add/update methods.
+        Process AI-generated content as potential knowledge.
 
         Args:
-            content: The content of the knowledge unit
-            source: The source of the knowledge (action, feedback, or corpus)
+            content: Content to process (can be a string or a message object)
+            source: Source of the knowledge
             context: Optional contextual information
-            metadata: Optional metadata for the knowledge unit
-            similarity_threshold: Threshold for considering content similar (0.0 to 1.0)
-            update_if_similar: Whether to update existing similar knowledge (True) or
-                               add as new regardless of similarity (False)
+            metadata: Optional metadata
 
         Returns:
-            str: The unique ID of the added or updated knowledge unit
+            The unique ID of the stored knowledge
 
         Raises:
-            MemoryError: If the operation fails after retries
+            MemoryError: If there's an error processing knowledge
         """
-        await self._ensure_initialized()
-
         try:
-            # Enhance the context and metadata using the contextualizer
-            enhanced = await self.contextualizer.generate_context(
-                content=content, existing_context=context, metadata=metadata
-            )
-
-            enhanced_context = enhanced["context"]
-            enhanced_metadata = enhanced["metadata"]
-
-            logger.info(f"Processing potential knowledge: '{content[:50]}...' (source: {source})")
-
-            # Determine whether to add as new or update existing
-            if not update_if_similar:
-                # Force add as new if update_if_similar is False
-                return await self._add_new_knowledge(
-                    content=content,
-                    source=source,
-                    context=enhanced_context,
-                    metadata=enhanced_metadata,
-                )
-
-            # Use the find_similar_knowledge method to check for similar content
-            similar_unit = await self._find_similar_knowledge(
-                content=content, similarity_threshold=similarity_threshold
-            )
-
-            if similar_unit:
-                # Update existing knowledge
-                logger.info(
-                    f"Found similar knowledge unit {similar_unit.unique_id}, updating instead of adding new"
-                )
-                return await self._update_existing_knowledge(
-                    unique_id=similar_unit.unique_id,
-                    content=content,
-                    source=source,
-                    context=enhanced_context,
-                    metadata=enhanced_metadata,
-                )
+            # Handle LangChain message objects (like AIMessage)
+            if hasattr(content, "content"):
+                content_text = content.content
             else:
-                # Add as new knowledge
-                logger.info("No similar knowledge found, adding as new")
-                return await self._add_new_knowledge(
-                    content=content,
-                    source=source,
-                    context=enhanced_context,
-                    metadata=enhanced_metadata,
-                )
+                content_text = str(content)
 
+            logger.info(
+                f"Processing potential knowledge: '{content_text[:50]}...' (source: {source})"
+            )
+
+            # Determine if this is valuable knowledge
+            is_valuable = await self._evaluate_knowledge_value(content_text)
+            if not is_valuable:
+                logger.info("Content not valuable, skipping...")
+                return ""
+
+            # Format for storage
+            formatted_content = await self._format_agent_knowledge(content_text)
+            if not formatted_content:
+                logger.info("Nothing to store after formatting")
+                return ""
+
+            # Store the knowledge
+            metadata = metadata or {}
+            metadata["knowledge_value"] = "high"
+
+            unit_id = await self.add_knowledge(
+                content=formatted_content, source=source, context=context, metadata=metadata
+            )
+            return unit_id
         except Exception as e:
             error_msg = f"Error processing potential knowledge: {str(e)}"
             logger.error(error_msg)
@@ -517,39 +490,46 @@ class MemoryManager:
     async def add_knowledge(
         self,
         content: str,
-        source: str,
+        source: str = "agent",
         context: str = "",
         metadata: dict[str, Any] | None = None,
         similarity_threshold: float = 0.85,
         update_if_similar: bool = True,
     ) -> str:
         """
-        Add a new piece of knowledge to the memory or update if similar content exists.
+        Add knowledge directly to the memory store.
 
         Args:
-            content: The content of the knowledge unit
-            source: The source of the knowledge (action, feedback, or corpus)
-            context: Optional contextual information
-            metadata: Optional metadata for the knowledge unit
-            similarity_threshold: Threshold for considering content similar (0.0 to 1.0)
-            update_if_similar: Whether to update existing similar knowledge (True) or
-                               add as new regardless of similarity (False)
+            content: The content to store
+            source: The source of the knowledge
+            context: Optional contextual information (ignored in simplified implementation)
+            metadata: Optional metadata
+            similarity_threshold: Threshold for similarity (ignored in simplified implementation)
+            update_if_similar: Whether to update similar entries (ignored in simplified implementation)
 
         Returns:
-            str: The unique ID of the added or updated knowledge unit
-
-        Raises:
-            MemoryError: If the operation fails after retries
+            The unique ID of the stored knowledge
         """
-        # Delegate to process_potential_knowledge for unified handling
-        return await self.process_potential_knowledge(
-            content=content,
-            source=source,
-            context=context,
-            metadata=metadata,
-            similarity_threshold=similarity_threshold,
-            update_if_similar=update_if_similar,
+        await self._ensure_initialized()
+
+        # Create knowledge unit
+        knowledge_unit = KnowledgeUnit(
+            original_chunk=content,
+            contextual_text=context,
+            knowledge_source=source,
+            metadata=metadata or {},
+            timestamp=datetime.utcnow().isoformat(),
         )
+
+        # Store in memory store
+        try:
+            unique_id = await self.memory_store.add(knowledge_unit)
+            logger.info(f"Successfully added knowledge unit with ID: {unique_id}")
+            return unique_id
+        except Exception as e:
+            error_msg = f"Failed to add knowledge unit: {str(e)}"
+            logger.error(error_msg)
+            raise MemoryError(error_msg) from e
 
     async def retrieve_knowledge(self, unique_id: str) -> KnowledgeUnit | None:
         """
@@ -735,6 +715,8 @@ class MemoryManager:
         """
         await self._ensure_initialized()
 
+        logger.info(f"Searching for knowledge related to: {content[:50]}...")
+
         try:
             # For vector stores, we can use the embedding-based search
             if isinstance(self.memory_store, VectorStore):
@@ -761,11 +743,25 @@ class MemoryManager:
                     filter_criteria=filter_criteria if filter_criteria else None,
                 )
 
+                # Log retrieved knowledge units for debugging
+                logger.info(f"Retrieved {len(results)} knowledge units with scores:")
+                for i, (unit, score) in enumerate(results[:5]):  # Log first 5 for brevity
+                    source = unit.knowledge_source
+                    content_preview = (
+                        unit.original_chunk[:50] + "..." if unit.original_chunk else "Empty"
+                    )
+                    logger.info(
+                        f"Unit {i + 1}: Score={score:.4f}, Source={source}, Content={content_preview}"
+                    )
+
                 # Filter by minimum similarity score if specified
                 if min_similarity_score > 0:
                     results = [
                         (ku, score) for ku, score in results if score >= min_similarity_score
                     ]
+                    logger.info(
+                        f"After filtering, {len(results)} units remain with score >= {min_similarity_score}"
+                    )
 
                 return results
 
@@ -1038,3 +1034,61 @@ class MemoryManager:
         except Exception as e:
             logger.warning(f"Error finding similar knowledge: {str(e)}")
             return None
+
+    async def process_knowledge(
+        self,
+        content: Any,
+        source: str = "agent",
+        context: str = "",
+        metadata: dict[str, Any] | None = None,
+        similarity_threshold: float = 0.85,
+        update_if_similar: bool = True,
+    ) -> str:
+        """
+        Process new knowledge (compatibility wrapper for older code).
+
+        Args:
+            content: The content to process
+            source: Source of the knowledge
+            context: Context (ignored in simplified implementation)
+            metadata: Optional metadata
+            similarity_threshold: Threshold for similarity (ignored)
+            update_if_similar: Whether to update similar entries (ignored)
+
+        Returns:
+            The unique ID of the stored knowledge
+        """
+        return await self.process_potential_knowledge(
+            content=content,
+            source=source,
+            metadata=metadata,
+        )
+
+    async def _evaluate_knowledge_value(self, content: str) -> bool:
+        """
+        Evaluate if the content is valuable knowledge worth storing.
+
+        Args:
+            content: The content to evaluate
+
+        Returns:
+            True if content is valuable, False otherwise
+        """
+        # In this simplified implementation, we consider all content valuable
+        # In a more sophisticated implementation, this would use an LLM to evaluate
+        return bool(content and len(content.strip()) > 10)
+
+    async def _format_agent_knowledge(self, content: str) -> str:
+        """
+        Format agent-generated content for storage.
+
+        Args:
+            content: Raw content from agent
+
+        Returns:
+            Formatted content ready for storage
+        """
+        # Remove any system prompts or unnecessary prefixes
+        # In this simplified version, we just return the content as is
+        # In a more sophisticated version, this would clean and format the content
+        return content.strip()

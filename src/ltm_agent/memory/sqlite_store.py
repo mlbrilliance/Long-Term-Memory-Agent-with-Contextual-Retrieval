@@ -12,10 +12,10 @@ from pathlib import Path
 from typing import Any
 
 import aiosqlite
+import numpy as np
 
 from ltm_agent.core.exceptions import (
     KnowledgeUnitDeleteError,
-    KnowledgeUnitNotFoundError,
     KnowledgeUnitUpdateError,
     MemoryStoreError,
 )
@@ -24,6 +24,16 @@ from ltm_agent.memory.base import BaseVectorStore
 
 # Configure logging
 logger = logging.getLogger(__name__)
+
+import hashlib
+import random
+
+try:
+    from sentence_transformers import SentenceTransformer
+
+    SENTENCE_TRANSFORMERS_AVAILABLE = True
+except ImportError:
+    SENTENCE_TRANSFORMERS_AVAILABLE = False
 
 
 class SQLiteVectorStore(BaseVectorStore):
@@ -36,8 +46,9 @@ class SQLiteVectorStore(BaseVectorStore):
     def __init__(
         self,
         database_path: str | Path = "memory.db",
-        embedding_dim: int = 768,
+        embedding_dim: int = 384,
         create_tables: bool = True,
+        embedding_model_name: str = "all-MiniLM-L6-v2",
     ):
         """
         Initialize the SQLite vector store.
@@ -46,13 +57,36 @@ class SQLiteVectorStore(BaseVectorStore):
             database_path: Path to the SQLite database file
             embedding_dim: Dimension of embedding vectors
             create_tables: Whether to create tables on initialization
+            embedding_model_name: Name of the SentenceTransformer model to use
         """
         self.database_path = Path(database_path)
         self.embedding_dim = embedding_dim
         self.create_tables_on_init = create_tables
         self.initialized = False
-        super().__init__(storage_backend=self.database_path)
+        self.embedding_model_name = embedding_model_name
+        self.embedding_model = None
 
+        # Try to initialize the embedding model if available
+        if SENTENCE_TRANSFORMERS_AVAILABLE:
+            try:
+                self.embedding_model = SentenceTransformer(embedding_model_name)
+                # Verify dimension matches model
+                actual_dim = self.embedding_model.get_sentence_embedding_dimension()
+                if actual_dim != embedding_dim:
+                    logger.warning(
+                        f"Provided embedding_dim {embedding_dim} does not match model {embedding_model_name} dimension {actual_dim}. Using {actual_dim}."
+                    )
+                    self.embedding_dim = actual_dim
+                logger.info(f"Initialized embedding model: {embedding_model_name}")
+            except Exception as e:
+                logger.error(
+                    f"Failed to load embedding model {embedding_model_name}. Error: {e}. Using fallback random embeddings."
+                )
+                self.embedding_model = None
+        else:
+            logger.warning("SentenceTransformers not available. Using fallback random embeddings.")
+
+        super().__init__(storage_backend=self.database_path)
         logger.info(f"Initialized SQLiteVectorStore with database at {self.database_path}")
 
     async def initialize(self) -> None:
@@ -168,9 +202,19 @@ class SQLiteVectorStore(BaseVectorStore):
             Deserialized knowledge unit
         """
         # Convert SQLite row to dict if it's not already one
+        row_dict = {}
         if hasattr(row, "keys"):
             # This is a sqlite3.Row object
-            row_dict = {key: row[key] for key in row}
+            try:
+                # Safely extract keys that exist in the row
+                for key in row:
+                    try:
+                        row_dict[key] = row[key]
+                    except (IndexError, KeyError):
+                        # Skip keys that can't be accessed
+                        continue
+            except Exception as e:
+                logger.warning(f"Error extracting keys from row: {e}")
         else:
             # Already a dict
             row_dict = row
@@ -259,10 +303,79 @@ class SQLiteVectorStore(BaseVectorStore):
             # Convert bytes back to list of floats using pickle
             import pickle
 
-            return pickle.loads(embedding_bytes)
+            embedding = pickle.loads(embedding_bytes)
+
+            # Convert any NumPy arrays to Python list to avoid truth value ambiguity
+            if hasattr(embedding, "__array__"):  # Check if it's a NumPy array
+                embedding = embedding.tolist()
+
+            return embedding
         except Exception as e:
             logger.warning(f"Error deserializing embedding: {str(e)}")
             return None
+
+    def _normalize_vector(self, vector: list[float] | None) -> np.ndarray | None:
+        """
+        Normalize a vector to unit length.
+
+        Args:
+            vector: The vector to normalize
+
+        Returns:
+            np.ndarray: The normalized vector, or None if normalization fails
+        """
+        if vector is None:
+            return None
+
+        try:
+            np_vector = np.array(vector, dtype=np.float32)
+            norm = np.linalg.norm(np_vector)
+            if norm > 0:
+                return np_vector / norm
+            else:
+                # Handle zero vector case
+                logger.warning("Attempted to normalize a zero vector.")
+                return None  # Or return zero vector if appropriate
+        except Exception as e:
+            logger.error(f"Error normalizing vector: {e}")
+            return None
+
+    def _build_where_clause(self, filter_criteria: dict[str, Any] | None) -> tuple[str, list]:
+        """Builds the WHERE clause and parameters for filtering.
+
+        Args:
+            filter_criteria: Dictionary of criteria to filter by
+
+        Returns:
+            Tuple of (where_clause, params)
+        """
+        if not filter_criteria:
+            return "", []
+
+        conditions = []
+        params = []
+        for key, value in filter_criteria.items():
+            if key == "knowledge_source":
+                conditions.append("ku.knowledge_source = ?")
+                params.append(value)
+            elif key == "tags":
+                if isinstance(value, list):
+                    tag_conditions = []
+                    for tag in value:
+                        tag_conditions.append("ku.tags LIKE ?")
+                        params.append(f"%{tag}%")
+                    conditions.append(f"({' OR '.join(tag_conditions)})")
+                else:
+                    conditions.append("ku.tags LIKE ?")
+                    params.append(f"%{value}%")
+            # Add other filterable fields here if needed
+            else:
+                logger.warning(f"Unsupported filter key: {key}")
+
+        if not conditions:
+            return "", []
+
+        return f"WHERE {' AND '.join(conditions)}", params
 
     async def _add_implementation(self, knowledge_unit: KnowledgeUnit) -> str:
         """
@@ -278,33 +391,30 @@ class SQLiteVectorStore(BaseVectorStore):
             MemoryStoreError: If the operation fails
         """
         await self._ensure_initialized()
+        unique_id = knowledge_unit.unique_id
+        logger.debug(f"Attempting to add unit {unique_id} to SQLite.")
 
-        # Generate embedding if not present
+        # Generate embedding if not present (ensure this doesn't raise unhandled exceptions)
         if knowledge_unit.embedding_vector is None:
             try:
-                # Generate embedding from the content
                 text_to_embed = knowledge_unit.original_chunk
                 if knowledge_unit.contextual_text:
                     text_to_embed = f"{text_to_embed}\n{knowledge_unit.contextual_text}"
-
                 knowledge_unit.embedding_vector = await self.generate_embedding(text_to_embed)
+                logger.debug(f"Generated embedding for unit {unique_id}")
             except Exception as e:
-                logger.warning(f"Failed to generate embedding: {str(e)}. Creating a random one.")
-                # Generate a random embedding as fallback
-                import random
+                logger.error(
+                    f"Failed to generate embedding for {unique_id}: {str(e)}. Unit will be added without embedding.",
+                    exc_info=True,
+                )
+                knowledge_unit.embedding_vector = None  # Ensure it's None if generation failed
 
-                knowledge_unit.embedding_vector = [
-                    random.uniform(-1, 1) for _ in range(self.embedding_dim)
-                ]
-
-        # Serialize the knowledge unit
         serialized_unit = self._serialize_knowledge_unit(knowledge_unit)
+        serialized_embedding = self._serialize_embedding(knowledge_unit.embedding_vector)
 
         try:
             async with aiosqlite.connect(self.database_path) as conn:
-                # Begin a transaction
                 await conn.execute("BEGIN TRANSACTION")
-
                 try:
                     # Insert into knowledge_units table
                     await conn.execute(
@@ -315,7 +425,7 @@ class SQLiteVectorStore(BaseVectorStore):
                         ) VALUES (?, ?, ?, ?, ?, ?, ?)
                         """,
                         (
-                            serialized_unit["unique_id"],
+                            unique_id,
                             serialized_unit["original_chunk"],
                             serialized_unit["contextual_text"],
                             serialized_unit["knowledge_source"],
@@ -324,36 +434,32 @@ class SQLiteVectorStore(BaseVectorStore):
                             serialized_unit["tags"],
                         ),
                     )
+                    logger.debug(f"Inserted unit data for {unique_id}")
 
-                    # Handle embedding if present
-                    if knowledge_unit.embedding_vector is not None:
-                        # Serialize the embedding
-                        serialized_embedding = self._serialize_embedding(
-                            knowledge_unit.embedding_vector
-                        )
-
-                        # Insert into embeddings table
+                    # Insert into embeddings table ONLY if embedding exists
+                    if serialized_embedding is not None:
                         await conn.execute(
                             """
                             INSERT INTO embeddings (unique_id, embedding)
                             VALUES (?, ?)
                             """,
-                            (serialized_unit["unique_id"], serialized_embedding),
+                            (unique_id, serialized_embedding),
                         )
+                        logger.debug(f"Inserted embedding for {unique_id}")
+                    else:
+                        logger.warning(f"No embedding to insert for unit {unique_id}")
 
-                    # Commit the transaction
                     await conn.commit()
-
-                    return serialized_unit["unique_id"]
+                    logger.info(f"Successfully added unit {unique_id} to SQLite.")
+                    return unique_id
                 except Exception as e:
-                    # Rollback on error
                     await conn.execute("ROLLBACK")
-                    error_msg = f"Error adding knowledge unit to SQLite store: {str(e)}"
-                    logger.error(error_msg)
+                    error_msg = f"Error during transaction for adding unit {unique_id}: {str(e)}"
+                    logger.error(error_msg, exc_info=True)
                     raise MemoryStoreError(error_msg) from e
         except Exception as e:
-            error_msg = f"Error connecting to SQLite database: {str(e)}"
-            logger.error(error_msg)
+            error_msg = f"Error connecting/adding to SQLite for unit {unique_id}: {str(e)}"
+            logger.error(error_msg, exc_info=True)
             raise MemoryStoreError(error_msg) from e
 
     async def _get_implementation(self, unique_id: str) -> KnowledgeUnit | None:
@@ -370,39 +476,51 @@ class SQLiteVectorStore(BaseVectorStore):
             MemoryStoreError: If the operation fails
         """
         await self._ensure_initialized()
-
+        logger.debug(f"Attempting to get unit {unique_id} from SQLite.")
         try:
             async with aiosqlite.connect(self.database_path) as conn:
                 conn.row_factory = aiosqlite.Row
-
-                # Query for the knowledge unit
                 query = """
-                SELECT knowledge_units.*, embeddings.embedding
-                FROM knowledge_units
-                LEFT JOIN embeddings ON knowledge_units.unique_id = embeddings.unique_id
-                WHERE knowledge_units.unique_id = ?
+                SELECT ku.*, e.embedding
+                FROM knowledge_units ku
+                LEFT JOIN embeddings e ON ku.unique_id = e.unique_id
+                WHERE ku.unique_id = ?
                 """
-
                 async with conn.execute(query, (unique_id,)) as cursor:
                     row = await cursor.fetchone()
 
                     if row is None:
+                        logger.warning(f"Unit {unique_id} not found in SQLite.")
                         return None
 
-                    # Deserialize the knowledge unit
-                    knowledge_unit = self._deserialize_knowledge_unit(row)
+                    try:
+                        # Deserialize the knowledge unit
+                        knowledge_unit = self._deserialize_knowledge_unit(row)
 
-                    # Add embedding if present in the result
-                    if "embedding" in row and row["embedding"] is not None:
-                        knowledge_unit.embedding_vector = self._deserialize_embedding(
-                            row["embedding"]
+                        # Add embedding if present
+                        if "embedding" in row and row["embedding"] is not None:
+                            knowledge_unit.embedding_vector = self._deserialize_embedding(
+                                row["embedding"]
+                            )
+                        else:
+                            knowledge_unit.embedding_vector = (
+                                None  # Explicitly set to None if not found
+                            )
+
+                        logger.debug(f"Successfully retrieved and deserialized unit {unique_id}.")
+                        return knowledge_unit
+                    except Exception as deser_e:
+                        logger.error(
+                            f"Failed to deserialize unit {unique_id} from DB row. Error: {deser_e}",
+                            exc_info=True,
                         )
+                        return None  # Treat deserialization failure as not found
 
-                    return knowledge_unit
         except Exception as e:
-            error_msg = f"Error retrieving knowledge unit from SQLite store: {str(e)}"
-            logger.error(error_msg)
-            raise KnowledgeUnitNotFoundError(error_msg) from e
+            # Log the error but return None to indicate not found
+            error_msg = f"Error retrieving unit {unique_id} from SQLite: {str(e)}"
+            logger.error(error_msg, exc_info=True)
+            return None  # Return None to indicate not found or error during retrieval
 
     async def _update_implementation(self, knowledge_unit: KnowledgeUnit) -> bool:
         """
@@ -426,7 +544,7 @@ class SQLiteVectorStore(BaseVectorStore):
             async with aiosqlite.connect(self.database_path) as conn:
                 conn.row_factory = aiosqlite.Row
 
-                # Begin a transaction
+                # Begin transaction
                 await conn.execute("BEGIN TRANSACTION")
 
                 try:
@@ -590,7 +708,7 @@ class SQLiteVectorStore(BaseVectorStore):
             MemoryStoreError: If the operation fails
         """
         await self._ensure_initialized()
-
+        logger.debug(f"Attempting search in SQLite (limit={limit}).")
         try:
             # Fallback to simple keyword search if query is empty
             if not query or query.strip() == "":
@@ -622,7 +740,9 @@ class SQLiteVectorStore(BaseVectorStore):
                             knowledge_unit = self._deserialize_knowledge_unit(row)
 
                             # Get embedding if present
-                            embedding_query = "SELECT embedding FROM embeddings WHERE unique_id = ?"
+                            embedding_query = """
+                            SELECT embedding FROM embeddings WHERE unique_id = ?
+                            """
                             async with conn.execute(
                                 embedding_query, (knowledge_unit.unique_id,)
                             ) as embedding_cursor:
@@ -683,30 +803,8 @@ class SQLiteVectorStore(BaseVectorStore):
 
             # Add WHERE clauses for filtering
             if filter_criteria:
-                where_clauses = []
-
-                for key, value in filter_criteria.items():
-                    if key == "knowledge_source":
-                        where_clauses.append("knowledge_units.knowledge_source = ?")
-                        params.append(value)
-                    elif key == "tags":
-                        # Handle tags as a special case
-                        if isinstance(value, list) and value:
-                            # For each tag, check if it's in the comma-separated list
-                            tag_clauses = []
-                            for tag in value:
-                                tag_clauses.append("knowledge_units.tags LIKE ?")
-                                params.append(f"%{tag}%")
-
-                            # Combine tag clauses with OR
-                            where_clauses.append(f"({' OR '.join(tag_clauses)})")
-                        elif isinstance(value, str) and value:
-                            where_clauses.append("knowledge_units.tags LIKE ?")
-                            params.append(f"%{value}%")
-                    # Add more filters as needed
-
-                if where_clauses:
-                    query_parts.append("WHERE " + " AND ".join(where_clauses))
+                where_clause, params = self._build_where_clause(filter_criteria)
+                query_parts.append(where_clause)
 
             # Add ORDER BY for consistent ordering
             if sort_by:
@@ -779,30 +877,8 @@ class SQLiteVectorStore(BaseVectorStore):
 
             # Add WHERE clauses for filtering
             if filter_criteria:
-                where_clauses = []
-
-                for key, value in filter_criteria.items():
-                    if key == "knowledge_source":
-                        where_clauses.append("knowledge_units.knowledge_source = ?")
-                        params.append(value)
-                    elif key == "tags":
-                        # Handle tags as a special case
-                        if isinstance(value, list) and value:
-                            # For each tag, check if it's in the comma-separated list
-                            tag_clauses = []
-                            for tag in value:
-                                tag_clauses.append("knowledge_units.tags LIKE ?")
-                                params.append(f"%{tag}%")
-
-                            # Combine tag clauses with OR
-                            where_clauses.append(f"({' OR '.join(tag_clauses)})")
-                        elif isinstance(value, str) and value:
-                            where_clauses.append("knowledge_units.tags LIKE ?")
-                            params.append(f"%{value}%")
-                    # Add more filters as needed
-
-                if where_clauses:
-                    query_parts.append("WHERE " + " AND ".join(where_clauses))
+                where_clause, params = self._build_where_clause(filter_criteria)
+                query_parts.append(where_clause)
 
             # Combine into final query
             query = " ".join(query_parts)
@@ -826,137 +902,164 @@ class SQLiteVectorStore(BaseVectorStore):
         filter_criteria: dict[str, Any] | None = None,
     ) -> list[tuple[KnowledgeUnit, float]]:
         """
-        Search for knowledge units by embedding similarity in the SQLite store.
+        Search for knowledge units by embedding similarity.
 
         Args:
             embedding: The query embedding
-            limit: Maximum number of results to return
-            filter_criteria: Optional criteria to filter results
+            limit: The maximum number of results to return
+            filter_criteria: Additional criteria to filter the results
 
         Returns:
-            List of tuples of (knowledge unit, similarity score)
+            A list of (knowledge_unit, similarity) tuples
 
         Raises:
             MemoryStoreError: If the operation fails
         """
         await self._ensure_initialized()
-
+        logger.debug(f"Attempting similarity search in SQLite (limit={limit}).")
         try:
-            # Convert embedding to JSON for comparison
-            query_embedding_json = json.dumps(embedding)
-
             async with aiosqlite.connect(self.database_path) as conn:
                 conn.row_factory = aiosqlite.Row
 
-                # Build the where clause for filter criteria
-                where_clause = ""
-                params = []
-
-                if filter_criteria:
-                    conditions = []
-
-                    for key, value in filter_criteria.items():
-                        if key == "knowledge_source":
-                            conditions.append("knowledge_units.knowledge_source = ?")
-                            params.append(value)
-                        elif key == "tags":
-                            if isinstance(value, list):
-                                # Match any tag in the list
-                                tag_conditions = []
-                                for tag in value:
-                                    tag_conditions.append("knowledge_units.tags LIKE ?")
-                                    params.append(f"%{tag}%")
-                                conditions.append(f"({' OR '.join(tag_conditions)})")
-                            else:
-                                conditions.append("knowledge_units.tags LIKE ?")
-                                params.append(f"%{value}%")
-
-                    if conditions:
-                        where_clause = f"WHERE {' AND '.join(conditions)}"
-
-                # Use a user-defined function for cosine similarity
-                # This is a simplified approach for demonstration
-                # In production, consider using vectors extension or other optimizations
-
-                # Load all embeddings and perform similarity comparison in Python
-                # This isn't scalable for large datasets but works for demo purposes
-
-                # Build the query to get all embeddings with filter
-                query = f"""
-                SELECT knowledge_units.*, embeddings.embedding
-                FROM knowledge_units
-                JOIN embeddings ON knowledge_units.unique_id = embeddings.unique_id
+                # First, retrieve all embedding vectors with filter to calculate similarity
+                where_clause, params = self._build_where_clause(filter_criteria)
+                embeddings_query = f"""
+                SELECT ku.unique_id, e.embedding
+                FROM knowledge_units ku
+                JOIN embeddings e ON ku.unique_id = e.unique_id
                 {where_clause}
                 """
+                logger.debug(
+                    f"Executing query to fetch embeddings: {embeddings_query} with params {params}"
+                )
 
-                results = []
-                async with conn.execute(query, params) as cursor:
+                all_embeddings = {}
+                async with conn.execute(embeddings_query, params) as cursor:
                     async for row in cursor:
-                        # Deserialize the knowledge unit
-                        knowledge_unit = self._deserialize_knowledge_unit(row)
+                        try:
+                            unit_id = row["unique_id"]
+                            stored_embedding = self._deserialize_embedding(row["embedding"])
+                            if stored_embedding is not None:
+                                all_embeddings[unit_id] = stored_embedding
+                            else:
+                                logger.warning(
+                                    f"Skipping unit {unit_id} due to missing/invalid embedding."
+                                )
+                        except Exception as deser_e:
+                            logger.error(
+                                f"Failed to deserialize embedding for unit {row['unique_id']}: {deser_e}",
+                                exc_info=True,
+                            )
+                            continue
 
-                        # Deserialize the embedding
-                        stored_embedding = self._deserialize_embedding(row["embedding"])
-                        knowledge_unit.embedding_vector = stored_embedding
+                logger.debug(
+                    f"Retrieved {len(all_embeddings)} embeddings for similarity comparison."
+                )
+                if not all_embeddings:
+                    return []
 
-                        # Calculate cosine similarity
-                        # For simplicity, we're using dot product as a proxy for cosine similarity
-                        # This is valid if vectors are normalized
-                        dot_product = sum(
-                            q * s for q, s in zip(embedding, stored_embedding, strict=False)
+                # Normalize query vector
+                query_vector = self._normalize_vector(embedding)
+                if query_vector is None:
+                    logger.error("Query vector normalization failed.")
+                    return []
+
+                # Calculate similarities and sort
+                results_with_scores = []
+                for unit_id, stored_embedding in all_embeddings.items():
+                    try:
+                        stored_vector = self._normalize_vector(stored_embedding)
+                        if stored_vector is not None:
+                            # Check if dimensions match before attempting dot product
+                            if len(query_vector) != len(stored_vector):
+                                logger.warning(
+                                    f"Dimension mismatch: query_vector ({len(query_vector)}) != "
+                                    f"stored_vector ({len(stored_vector)}) for unit {unit_id}. Skipping."
+                                )
+                                continue
+
+                            # Calculate cosine similarity
+                            similarity = float(np.dot(query_vector, stored_vector))
+                            # Ensure similarity is in [0, 1] range
+                            similarity = max(0.0, min(1.0, similarity))
+                            results_with_scores.append((unit_id, similarity))
+                        else:
+                            logger.warning(f"Could not normalize stored vector for unit {unit_id}")
+                    except Exception as e:
+                        logger.error(f"Error processing embedding for unit {unit_id}: {e}")
+                        continue
+
+                # Sort by similarity (descending)
+                results_with_scores.sort(key=lambda x: x[1], reverse=True)
+                logger.debug(f"Calculated similarities for {len(results_with_scores)} units.")
+
+                # Only fetch the full knowledge units for the top results
+                top_results = []
+                for unit_id, score in results_with_scores[:limit]:
+                    # Fetch the full knowledge unit
+                    unit = await self._get_implementation(unit_id)
+                    if unit:
+                        # For debugging, log the content of high scoring units
+                        if score > 0.5:
+                            logger.debug(
+                                f"High similarity unit (score={score:.4f}): {unit.original_chunk[:50]}..."
+                            )
+                        top_results.append((unit, score))
+                    else:
+                        logger.warning(
+                            f"Could not retrieve full unit data for {unit_id} during similarity search."
                         )
 
-                        # Normalize to 0-1 range (assuming normalized vectors)
-                        similarity = (dot_product + 1) / 2
+                logger.debug(
+                    f"Similarity search yielded {len(top_results)} results after limiting to top {limit}."
+                )
+                return top_results
 
-                        results.append((knowledge_unit, similarity))
-
-                # Sort by similarity (descending) and limit results
-                results.sort(key=lambda x: x[1], reverse=True)
-                return results[:limit]
         except Exception as e:
             error_msg = f"Error performing similarity search in SQLite store: {str(e)}"
-            logger.error(error_msg)
+            logger.error(error_msg, exc_info=True)
             raise MemoryStoreError(error_msg) from e
 
     async def _generate_embedding_implementation(self, text: str) -> list[float]:
         """
-        Generate an embedding for a text string.
-
-        This implementation creates a random embedding with a hash-based seed to ensure
-        the same text always gets the same embedding.
+        Generate an embedding for the text.
 
         Args:
-            text: Text to generate embedding for
+            text: The text to generate an embedding for
 
         Returns:
-            Embedding vector
+            list[float]: The embedding
 
         Raises:
-            MemoryStoreError: If the operation fails
+            EmbeddingError: If the embedding generation fails
         """
-        import hashlib
-        import random
+        await self._ensure_initialized()
 
-        try:
-            # Use a hash of the text as a random seed for reproducibility
-            hash_object = hashlib.md5(text.encode("utf-8"))
-            text_hash = int(hash_object.hexdigest(), 16)
-            random.seed(text_hash)
+        # Use real embeddings if model is available
+        if self.embedding_model is not None:
+            try:
+                # Generate embedding using SentenceTransformer
+                embedding = self.embedding_model.encode(text)
+                # Convert to list of floats
+                return embedding.tolist()
+            except Exception as e:
+                logger.error(f"Error generating embedding with SentenceTransformer: {e}")
+                # Fall back to random embedding if model fails
 
-            # Generate a random embedding vector
-            embedding = [random.uniform(-1, 1) for _ in range(self.embedding_dim)]
+        # Fall back to deterministic random embedding
+        logger.debug(f"Using fallback random embedding for text: {text[:50]}...")
+        hash_object = hashlib.md5(text.encode("utf-8"))
+        text_hash = int(hash_object.hexdigest(), 16)
+        random.seed(text_hash)
+        embedding = [random.uniform(-1, 1) for _ in range(self.embedding_dim)]
 
-            # Normalize the vector to unit length
-            magnitude = (sum(x**2 for x in embedding)) ** 0.5
-            if magnitude > 0:
-                embedding = [x / magnitude for x in embedding]
+        # Normalize the embedding
+        embedding_array = np.array(embedding)
+        norm = np.linalg.norm(embedding_array)
+        if norm > 0:
+            embedding = (embedding_array / norm).tolist()
 
-            # Reset the random seed
-            random.seed(None)
+        # Reset random seed
+        random.seed(None)
 
-            return embedding
-        except Exception as e:
-            error_msg = f"Error generating embedding: {str(e)}"
-            logger.error(error_msg)
-            raise MemoryStoreError(error_msg) from e
+        return embedding

@@ -6,25 +6,25 @@ for storage in the agent's memory, enabling the agent to learn from its actions
 and from human guidance.
 """
 
-import json
 import inspect
+import json
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
 def format_action_result(result: Any) -> str:
     """
     Format an action result for storage in the agent's memory.
-    
+
     Args:
         result: The result of an agent action (can be of any type)
-        
+
     Returns:
         str: A formatted string representation of the action result
     """
     timestamp = datetime.now().isoformat()
     formatted_parts = [f"ACTION RESULT: [{timestamp}]"]
-    
+
     # Handle different types of results
     if result is None:
         formatted_parts.append("Result: None")
@@ -54,44 +54,30 @@ def format_action_result(result: Any) -> str:
     else:
         # Handle primitive types and other cases
         formatted_parts.append(f"Result ({type(result).__name__}): {result}")
-    
+
     return "\n".join(formatted_parts)
 
 
 def format_human_feedback(feedback: Any) -> str:
     """
-    Format human feedback for storage in the agent's memory.
-    
+    Formats human feedback for storage and retrieval.
+
     Args:
-        feedback: The human feedback (can be of any type)
-        
+        feedback: The raw feedback content
+
     Returns:
-        str: A formatted string representation of the human feedback
+        str: The formatted feedback
     """
-    timestamp = datetime.now().isoformat()
-    formatted_parts = [f"HUMAN FEEDBACK: [{timestamp}]"]
-    
-    # Handle different types of feedback
     if feedback is None:
-        formatted_parts.append("Feedback: None")
-    elif isinstance(feedback, str):
-        formatted_parts.append(f"Feedback: {feedback}")
-    elif isinstance(feedback, dict):
-        formatted_parts.append("Feedback Details:")
-        # Format dictionary in a readable way
-        for key, value in feedback.items():
-            if isinstance(value, dict):
-                formatted_parts.append(f"  {key}:")
-                for sub_key, sub_value in value.items():
-                    formatted_parts.append(f"    {sub_key}: {sub_value}")
-            elif isinstance(value, list):
-                formatted_parts.append(f"  {key}:")
-                for item in value:
-                    formatted_parts.append(f"    - {item}")
-            else:
-                formatted_parts.append(f"  {key}: {value}")
-    else:
-        # Handle other types
-        formatted_parts.append(f"Feedback ({type(feedback).__name__}): {feedback}")
-    
-    return "\n".join(formatted_parts)
+        return ""
+
+    if isinstance(feedback, str):
+        # Return just the raw content without additional formatting
+        # This makes semantic matching much easier
+        return feedback.strip()
+
+    # Handle non-string types
+    try:
+        return json.dumps(feedback)
+    except Exception:
+        return str(feedback)

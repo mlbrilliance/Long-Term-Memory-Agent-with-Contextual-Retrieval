@@ -16,49 +16,23 @@ import re
 class SimpleMemoryUnit:
     """Simple memory unit for testing."""
 
-    def __init__(self, content, unit_type="fact", metadata=None):
+    def __init__(self, content, unit_type="fact", metadata=None, stop_words_list=None):
         """Initialize a memory unit."""
         self.content = content
         self.type = unit_type
         self.metadata = metadata or {}
+        # Use provided stop words or default to a basic set
+        self.stop_words = stop_words_list if stop_words_list is not None else set()
         self.concepts = self._extract_concepts()
 
     def _extract_concepts(self):
         """Extract key concepts from content."""
         # Simple tokenization for demonstration
         words = re.findall(r"\b\w+\b", self.content.lower())
-        stop_words = {
-            "a",
-            "an",
-            "the",
-            "is",
-            "are",
-            "was",
-            "were",
-            "be",
-            "been",
-            "and",
-            "or",
-            "but",
-            "in",
-            "on",
-            "at",
-            "to",
-            "for",
-            "with",
-            "by",
-            "of",
-            "that",
-            "this",
-            "these",
-            "those",
-            "it",
-            "they",
-        }
 
         concepts = set()
         for word in words:
-            if word not in stop_words and len(word) > 3:
+            if word not in self.stop_words and len(word) > 3:
                 concepts.add(word)
 
         return concepts
@@ -73,44 +47,8 @@ class SimpleEnhancedMemory:
         """Initialize the memory system."""
         self.units = []
 
-        # Special case handlers for targeted test scenarios
-        self.special_handlers = {
-            "What is Alice's relationship to Carol?": self._handle_alice_carol,
-            "How are neural networks related to AI?": self._handle_neural_ai,
-            "What unique feature does Earth have?": self._handle_earth_feature,
-        }
-
-    def add_knowledge(self, content, unit_type="fact", metadata=None):
-        """Add knowledge to the memory system."""
-        unit = SimpleMemoryUnit(content, unit_type, metadata)
-        self.units.append(unit)
-        return len(self.units) - 1
-
-    def answer(self, query):
-        """Generate an answer to the query."""
-        # 1. Check for special case handlers
-        if query in self.special_handlers:
-            return self.special_handlers[query]()
-
-        # 2. Find relevant units
-        relevant_units = self._find_relevant_units(query)
-
-        if not relevant_units:
-            return "I don't have information about that."
-
-        # 3. Handle corrections (prioritize corrections over original facts)
-        corrections = [unit for unit in relevant_units if unit.type == "correction"]
-        if corrections:
-            return corrections[0].content
-
-        # 4. Return the most relevant unit
-        return relevant_units[0].content
-
-    def _find_relevant_units(self, query):
-        """Find units relevant to the query."""
-        # Extract query concepts
-        query_words = set(re.findall(r"\b\w+\b", query.lower()))
-        stop_words = {
+        # Define stop words used in multiple methods
+        self.stop_words = {
             "a",
             "an",
             "the",
@@ -145,8 +83,110 @@ class SimpleEnhancedMemory:
             "which",
             "whose",
             "whom",
+            "my",
+            "i",  # Added 'my', 'i'
         }
-        query_concepts = query_words - stop_words
+
+        # Special case handlers for targeted test scenarios
+        self.special_handlers = {
+            "What is Alice's relationship to Carol?": self._handle_alice_carol,
+            "How are neural networks related to AI?": self._handle_neural_ai,
+            "What unique feature does Earth have?": self._handle_earth_feature,
+        }
+
+    def add_knowledge(self, content, unit_type="fact", metadata=None):
+        """Add knowledge to the memory system."""
+        # Pass the instance's stop_words list to the unit
+        unit = SimpleMemoryUnit(content, unit_type, metadata, stop_words_list=self.stop_words)
+        self.units.append(unit)
+        return len(self.units) - 1
+
+    def answer(self, query):
+        """Generate an answer to the query."""
+        # 1. Check for special case handlers
+        if query in self.special_handlers:
+            return self.special_handlers[query]()
+
+        # 2. Find relevant units and their scores
+        query_words = set(re.findall(r"\b\w+\b", query.lower()))
+        query_concepts = query_words - self.stop_words
+        scored_units = []
+
+        for unit in self.units:
+            score = self._calculate_relevance(unit, query_concepts, query)
+            if score > 0:  # Keep only units with *some* relevance initially
+                scored_units.append((unit, score))
+
+        # Sort by relevance score
+        scored_units.sort(key=lambda x: x[1], reverse=True)
+
+        # Get the units from the sorted list
+        relevant_units = [unit for unit, score in scored_units]
+
+        # 3. Filter out units with scores below a meaningful threshold
+        MIN_MEANINGFUL_SCORE = 0.15  # Adjust this threshold as needed
+        meaningful_scored_units = [
+            (unit, self._calculate_relevance(unit, query_concepts, query))
+            for unit in relevant_units
+            if self._calculate_relevance(unit, query_concepts, query) >= MIN_MEANINGFUL_SCORE
+        ]
+
+        if not meaningful_scored_units:
+            return "I don't have information about that."
+
+        # 4. Handle corrections (prioritize corrections over original facts)
+        corrections = [unit for unit, _ in meaningful_scored_units if unit.type == "correction"]
+        if corrections:
+            return corrections[0].content
+
+        # 5. Check if top unit is a consolidation - try to find more specific answers
+        if len(meaningful_scored_units) >= 1:
+            top_unit, top_score = meaningful_scored_units[0]
+
+            # If the top unit is a consolidation and has multiple facts, try to find a more specific answer
+            if top_unit.type == "consolidation" and len(meaningful_scored_units) > 1:
+                # Look for more specific non-consolidated units with good scores
+                for potential_unit, potential_score in meaningful_scored_units[
+                    1:4
+                ]:  # Check next 3 units
+                    if potential_unit.type != "consolidation" and potential_score > top_score * 0.7:
+                        # Check if query concepts are well-covered by this potential unit
+                        shared_concepts = potential_unit.concepts.intersection(query_concepts)
+                        if (
+                            len(shared_concepts) / len(query_concepts) > 0.7
+                        ):  # 70% of query concepts covered
+                            return potential_unit.content
+
+                # If no better specific unit found, try sentence extraction from consolidation
+                sentences = re.split(r"[.!?]\s+", top_unit.content)
+                best_sentence = None
+                best_sentence_score = 0
+
+                for sentence in sentences:
+                    if not sentence.strip():  # Skip empty sentences
+                        continue
+
+                    # Count how many query concepts appear in this sentence
+                    sentence_words = set(re.findall(r"\b\w+\b", sentence.lower()))
+                    shared_words = query_words.intersection(sentence_words)
+
+                    if len(shared_words) > best_sentence_score:
+                        best_sentence_score = len(shared_words)
+                        best_sentence = sentence
+
+                # If we found a sentence with query terms, return it
+                if best_sentence and best_sentence_score >= min(2, len(query_words)):
+                    return best_sentence.strip() + "."
+
+        # 6. Return the most relevant meaningful unit
+        return meaningful_scored_units[0][0].content
+
+    def _find_relevant_units(self, query):
+        """Find units relevant to the query."""
+        # This method is now mostly used by the previous implementation
+        # We keep it for backward compatibility
+        query_words = set(re.findall(r"\b\w+\b", query.lower()))
+        query_concepts = query_words - self.stop_words
 
         # Score units by relevance
         scored_units = []
@@ -162,26 +202,52 @@ class SimpleEnhancedMemory:
         return [unit for unit, _ in scored_units]
 
     def _calculate_relevance(self, unit, query_concepts, query):
-        """Calculate relevance of a unit to the query."""
-        # Exact match has highest priority
-        if query.lower() in unit.content.lower():
-            return 1.0
+        """Calculate relevance of a unit to the query using Jaccard index and type boosts."""
+        # Check if the unit's content IS the query itself (likely an interaction log)
+        is_exact_match_of_query = query.lower() == unit.content.lower()
 
-        # Check concept overlap
+        # If it's an exact match of the query, give it a very low score to avoid echoing.
+        if is_exact_match_of_query:
+            return 0.01  # Very low score for exact query matches
+
+        # If unit is an interaction or response type, assign a lower relevance
+        if unit.type in ["interaction", "response"]:
+            return 0.05  # Low score for interaction/response types
+
+        # Calculate concept overlap using Jaccard Index for better normalization
         shared_concepts = unit.concepts.intersection(query_concepts)
-        if not shared_concepts:
-            return 0.0
+        union_concepts = unit.concepts.union(query_concepts)
 
-        # Base score from concept overlap
-        score = len(shared_concepts) / max(len(query_concepts), 1)
+        if not union_concepts:  # Avoid division by zero if both sets are empty
+            concept_overlap_score = 0.0
+        else:
+            # Jaccard Index
+            concept_overlap_score = len(shared_concepts) / len(union_concepts)
 
-        # Boost corrections
+        # Start with the concept overlap score
+        score = concept_overlap_score
+
+        # If overlap is very low, check for simple containment as a fallback, but keep score low
+        if score < 0.1 and query.lower() in unit.content.lower():
+            score = max(score, 0.15)  # Small boost for containment if concepts didn't match well
+
+        # Boost specific types (apply boost relative to the base score)
+        type_multiplier = 1.0
         if unit.type == "correction":
-            score *= 1.5
+            type_multiplier = 1.5  # Corrections are important
+        elif unit.type == "consolidation":
+            type_multiplier = 1.3  # Consolidated knowledge is valuable
 
-        # Boost consolidation
-        if unit.type == "consolidation":
-            score *= 1.3
+        # Apply type multiplier
+        score *= type_multiplier
+
+        # Ensure score remains within [0, 1] range after boosts
+        score = min(1.0, score)
+
+        # If after all calculations, the score is extremely low, return 0
+        MIN_RELEVANCE_THRESHOLD = 0.1  # Define a minimum threshold
+        if score < MIN_RELEVANCE_THRESHOLD:
+            return 0.0
 
         return score
 
